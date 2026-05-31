@@ -263,12 +263,12 @@ h1 {
   margin-top: auto;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .social-row a {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: grid;
   place-items: center;
   border-radius: 12px;
@@ -298,6 +298,19 @@ h1 {
 .social-mark-wide {
   font-size: 13px;
   letter-spacing: 0;
+}
+
+.brand-icon {
+  display: block;
+  fill: currentColor;
+}
+
+.brand-upwork {
+  color: #14a800;
+}
+
+.brand-fiverr {
+  color: #1dbf73;
 }
 
 .content-card {
@@ -1253,9 +1266,15 @@ h1 {
 
   .profile-divider,
   .profile-list,
-  .social-row,
   .top-nav {
     display: none;
+  }
+
+  .social-row {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    margin-top: 2px;
+    gap: 10px;
   }
 
   .content-card {
