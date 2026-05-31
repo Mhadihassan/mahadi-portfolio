@@ -283,6 +283,23 @@ h1 {
   transform: translateY(-1px);
 }
 
+.social-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform 220ms ease, color 220ms ease, filter 220ms ease;
+}
+
+.social-mark-wide {
+  font-size: 13px;
+  letter-spacing: 0;
+}
+
 .content-card {
   min-height: calc(100vh - 48px);
   min-height: 760px;
@@ -928,7 +945,8 @@ h1 {
 .tag-row span:hover svg,
 .nav-link:hover svg,
 .nav-link.active svg,
-.social-row a:hover svg {
+.social-row a:hover svg,
+.social-row a:hover .social-mark {
   color: var(--accent-strong);
   filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.68));
   transform: translateY(-1px) scale(1.1) rotate(-5deg);
