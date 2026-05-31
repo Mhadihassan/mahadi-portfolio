@@ -700,13 +700,31 @@ h1 {
   transform: translateY(-2px);
 }
 
+.stats-grid article:first-child {
+  border-color: rgba(var(--accent-rgb), 0.62);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(var(--accent-rgb), 0.13), transparent 46%),
+    linear-gradient(180deg, rgba(var(--accent-rgb), 0.045), transparent 52%),
+    var(--panel-2);
+  box-shadow:
+    0 0 38px -12px rgba(var(--accent-rgb), 0.34),
+    0 18px 36px -24px rgba(0, 0, 0, 0.78),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
 .stats-grid article:hover::before,
+.stats-grid article:first-child::before,
 .service-card:hover::before,
 .project-card:hover::before,
 .resume-card:hover::before,
 .skill-group:hover::before,
 .contact-layout:hover::before {
   opacity: 0.72;
+}
+
+.stats-grid article:first-child .stat-icon {
+  background: rgba(var(--accent-rgb), 0.12);
+  box-shadow: 0 0 22px -10px rgba(var(--accent-rgb), 0.52);
 }
 
 .stat-icon {
