@@ -1230,7 +1230,7 @@ h1 {
     width: 100%;
     max-width: none;
     display: block;
-    padding: 18px 10px 18px;
+    padding: 6px 10px 18px;
     margin-left: auto;
     margin-right: auto;
     overflow: visible;
@@ -1323,7 +1323,8 @@ h1 {
 
   .profile-intro h1 {
     max-width: none;
-    font-size: 25px;
+    padding-right: 44px;
+    font-size: 23px;
     line-height: 1.15;
     white-space: nowrap;
   }
@@ -1360,7 +1361,7 @@ h1 {
 
   .profile-card.info-open .profile-list {
     max-height: 360px;
-    padding-top: 18px;
+    padding-top: 10px;
     border-top-color: var(--line);
     opacity: 1;
     pointer-events: auto;
@@ -1369,8 +1370,8 @@ h1 {
   .profile-list div {
     grid-template-columns: 58px minmax(0, 1fr);
     grid-template-rows: auto auto;
-    column-gap: 12px;
-    row-gap: 4px;
+    column-gap: 8px;
+    row-gap: 2px;
     align-items: center;
   }
 
@@ -1415,7 +1416,7 @@ h1 {
     width: 100%;
     max-width: 100%;
     min-height: 0;
-    margin-top: 28px;
+    margin-top: 8px;
     overflow: visible;
     border: 0;
     border-radius: 0;
@@ -1577,7 +1578,7 @@ h1 {
   .site-shell {
     width: 100%;
     max-width: none;
-    padding-inline: 10px;
+    padding: 4px 10px 18px;
   }
 
   .profile-card {
@@ -1599,7 +1600,8 @@ h1 {
   }
 
   .profile-intro h1 {
-    font-size: clamp(19px, 5.7vw, 22px);
+    padding-right: 40px;
+    font-size: clamp(18px, 5.2vw, 21px);
   }
 
   .role {
@@ -1609,8 +1611,8 @@ h1 {
 
   .profile-list div {
     grid-template-columns: 52px minmax(0, 1fr);
-    column-gap: 10px;
-    row-gap: 3px;
+    column-gap: 7px;
+    row-gap: 1px;
   }
 
   .profile-list dt span {
