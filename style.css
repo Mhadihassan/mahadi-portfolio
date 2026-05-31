@@ -1322,9 +1322,10 @@ h1 {
   }
 
   .profile-intro h1 {
-    max-width: 170px;
+    max-width: none;
     font-size: 25px;
     line-height: 1.15;
+    white-space: nowrap;
   }
 
   .role {
@@ -1583,7 +1584,7 @@ h1 {
   }
 
   .profile-intro h1 {
-    font-size: 22px;
+    font-size: clamp(19px, 5.7vw, 22px);
   }
 
   .role {
