@@ -22,13 +22,17 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=47" />
+    <link rel="stylesheet" href="style.css?v=48" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="site-shell">
       <aside class="profile-card" aria-label="Profile">
+        <button class="profile-info-toggle" type="button" aria-label="Show profile information" aria-expanded="false" aria-controls="profile-info">
+          <i data-lucide="chevron-down"></i>
+        </button>
+
         <div class="profile-photo-wrap">
           <img src="assets/profile.jpg?v=5" alt="Mahadi Hassan" class="profile-photo" />
         </div>
@@ -40,7 +44,7 @@
 
         <div class="profile-divider"></div>
 
-        <dl class="profile-list">
+        <dl class="profile-list" id="profile-info">
           <div>
             <dt><span><i data-lucide="map-pin"></i></span><em>Location</em></dt>
             <dd>Bangladesh</dd>
@@ -861,6 +865,6 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=8"></script>
   </body>
 </html>

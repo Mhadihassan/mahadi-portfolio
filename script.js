@@ -69,6 +69,16 @@ $(function () {
   refreshIcons();
   revealItems($(".panel-section.active"));
 
+  $(".profile-info-toggle").on("click", function () {
+    const $profileCard = $(".profile-card");
+    const isOpen = !$profileCard.hasClass("info-open");
+
+    $profileCard.toggleClass("info-open", isOpen);
+    $(this)
+      .attr("aria-expanded", isOpen ? "true" : "false")
+      .attr("aria-label", isOpen ? "Hide profile information" : "Show profile information");
+  });
+
   $(".resume-toggle").on("click", function (event) {
     event.stopPropagation();
     const $resumeNav = $(".resume-nav");
