@@ -1226,7 +1226,7 @@ h1 {
     width: calc(100% - 24px);
     max-width: 430px;
     display: block;
-    padding: 18px 0 22px;
+    padding: 18px 0 18px;
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
@@ -1238,50 +1238,51 @@ h1 {
     position: static;
     height: auto;
     min-height: 0;
-    padding: 24px;
+    min-height: 136px;
+    padding: 22px;
     display: grid;
-    grid-template-columns: 112px minmax(0, 1fr);
-    gap: 22px;
+    grid-template-columns: 86px minmax(0, 1fr);
+    gap: 20px;
     align-items: center;
-    border-radius: 24px;
+    border-radius: 22px;
     overflow: hidden;
   }
 
   .profile-card::before {
     content: "";
     position: absolute;
-    top: -1px;
-    right: -1px;
+    top: 20px;
+    right: 20px;
     z-index: 0;
     display: block;
-    width: 62px;
-    height: 54px;
-    border: 1px solid rgba(var(--accent-rgb), 0.45);
-    border-radius: 0 24px 0 18px;
-    background: rgba(var(--accent-rgb), 0.08);
-    box-shadow: 0 0 26px -8px rgba(var(--accent-rgb), 0.68);
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(var(--accent-rgb), 0.52);
+    border-radius: 50%;
+    background: rgba(var(--accent-rgb), 0.06);
+    box-shadow: 0 0 22px -8px rgba(var(--accent-rgb), 0.75);
   }
 
   .profile-card::after {
     content: "";
     position: absolute;
-    top: 22px;
-    right: 24px;
+    top: 25px;
+    right: 25px;
     z-index: 1;
     display: block;
-    width: 11px;
-    height: 11px;
-    border-top: 3px solid var(--accent-strong);
-    border-left: 3px solid var(--accent-strong);
-    transform: rotate(45deg);
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(var(--accent-rgb), 0.5);
+    border-right-color: var(--accent-strong);
+    border-radius: 50%;
     filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.75));
   }
 
   .profile-photo-wrap {
-    width: 112px;
+    width: 86px;
     max-width: none;
     margin: 0;
-    border-radius: 14px;
+    border-radius: 13px;
   }
 
   .profile-photo {
@@ -1296,16 +1297,16 @@ h1 {
   }
 
   .profile-intro h1 {
-    max-width: 190px;
-    font-size: 28px;
+    max-width: 170px;
+    font-size: 25px;
     line-height: 1.15;
   }
 
   .role {
-    margin-top: 14px;
+    margin-top: 10px;
     margin-left: 0;
-    padding: 7px 18px;
-    font-size: 13px;
+    padding: 6px 14px;
+    font-size: 12px;
   }
 
   .top-nav {
@@ -1313,16 +1314,11 @@ h1 {
   }
 
   .profile-divider {
-    grid-column: 1 / -1;
-    display: block;
-    width: 100%;
-    margin: 10px 0 2px;
+    display: none;
   }
 
   .profile-list {
-    grid-column: 1 / -1;
-    display: grid;
-    gap: 18px;
+    display: none;
   }
 
   .profile-list div {
@@ -1347,13 +1343,7 @@ h1 {
   }
 
   .social-row {
-    grid-column: 1 / -1;
-    justify-content: center;
-    width: 100%;
-    margin-top: 0;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-    gap: 18px;
+    display: none;
   }
 
   .social-row a {
@@ -1376,9 +1366,9 @@ h1 {
   .panel-section {
     width: 100%;
     max-width: 100%;
-    padding: 30px 24px 34px;
+    padding: 28px 24px 34px;
     border: 1px solid var(--line);
-    border-radius: 24px;
+    border-radius: 22px;
     background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.025), transparent 46%), var(--panel);
     box-shadow: var(--shadow);
   }
@@ -1386,7 +1376,7 @@ h1 {
   .lead-copy,
   .value-statement,
   .section-intro {
-    width: calc(100vw - 100px);
+    width: 100%;
     max-width: 100%;
     text-align: left;
   }
@@ -1473,9 +1463,10 @@ h1 {
     bottom: 0;
     z-index: 40;
     width: calc(100% - 18px);
+    max-width: 430px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     min-height: calc(68px + env(safe-area-inset-bottom));
     padding-bottom: env(safe-area-inset-bottom);
     border-top: 1px solid var(--line);
@@ -1528,23 +1519,23 @@ h1 {
   }
 
   .profile-card {
-    grid-template-columns: 96px minmax(0, 1fr);
-    gap: 18px;
-    padding: 22px;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 16px;
+    padding: 20px;
     border-radius: 22px;
   }
 
   .profile-photo-wrap {
-    width: 96px;
+    width: 78px;
   }
 
   .profile-intro h1 {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .role {
-    padding-inline: 14px;
-    font-size: 12px;
+    padding-inline: 12px;
+    font-size: 11px;
   }
 
   .profile-list div {
