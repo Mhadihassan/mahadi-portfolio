@@ -106,7 +106,7 @@
 
       #contact .client-projects { margin:32px 0 0; }
       #contact .client-projects > h3 { margin:0 0 14px; font-size:1rem; }
-      #contact .work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+      #contact .work-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; }
       .work-tile { display:flex; flex-direction:column; overflow:hidden; border:1px solid #494153; border-radius:16px; background:linear-gradient(135deg,#292532,#201e29); }
       .work-photo { height:100px; background-size:cover; background-position:center; overflow:hidden; }
       .work-photo img { width:100%; height:100%; object-fit:cover; display:block; }
@@ -117,7 +117,21 @@
       .work-copy summary { cursor:pointer; padding:6px 0; font-weight:600; }
       .work-copy p { line-height:1.65; margin:6px 0; }
       .work-copy a { margin-top:auto; display:inline-flex; align-items:center; gap:8px; min-height:40px; text-decoration:underline; text-underline-offset:4px; }
-      @media (max-width:640px) { #contact .work-grid { grid-template-columns:minmax(0,1fr); } }
+      @media (min-width: 641px) {
+        #contact .work-tile {
+          display: grid;
+          grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        }
+        #contact .work-photo {
+          position: relative;
+          height: auto;
+          min-height: 160px;
+        }
+        #contact .work-photo img {
+          position: absolute;
+          inset: 0;
+        }
+      }
     </style>
   </head>
   <body>
