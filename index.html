@@ -41,249 +41,192 @@
       }
 
       body {
-        background-color: var(--bg);
-        background-image: radial-gradient(ellipse 58rem 42rem at 90% 0, #231936, transparent 73%);
+        background: radial-gradient(ellipse 58rem 42rem at 90% 0, #231936, transparent 73%), var(--bg);
+        padding-bottom: 0;
+        font-size: 1rem;
+        overflow-x: clip;
       }
 
-      .top-nav, .mobile-nav { background-color: rgb(25 23 35 / 94%); }
-      .nav-dropdown { background-color: #211a2e; }
-      .profile-info-toggle { background-color: #191723; }
-      .nav-link.active, .mobile-link.active { color: var(--lime); }
-      .nav-link.active::after, .section-head span, .primary-btn, .skip-link { background-color: var(--lime); }
-      .primary-btn, .skip-link { color: #192011; }
-
-      #about .value-statement strong,
-      #about .lead-copy strong {
-        font-weight: 600;
-        text-shadow: none;
-      }
-
-      a:focus-visible, button:focus-visible {
+      .studio-wrap { width: min(74rem, calc(100% - 4rem)); margin-inline: auto; }
+      a:focus-visible, button:focus-visible, summary:focus-visible {
         outline: 2px solid var(--lime);
-        outline-offset: 3px;
+        outline-offset: 4px;
       }
+      [tabindex="-1"]:focus { outline: none; }
+      .studio-header { position: relative; z-index: 3; border-bottom: 1px solid #a58cc525; }
+      .studio-header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 5.25rem;
+        gap: 1rem 2rem;
+      }
+      .studio-name, .studio-nav { display: flex; align-items: center; }
+      .studio-name { gap: .75rem; font-weight: 700; white-space: nowrap; }
+      .studio-monogram {
+        display: grid;
+        place-items: center;
+        width: 2.35rem;
+        aspect-ratio: 1;
+        border-radius: .67rem;
+        border: 1px solid #c8b5ff70;
+        background: linear-gradient(140deg, #4c3b6c, #231b32);
+        font-size: 1.06rem;
+        box-shadow: inset 0 1px #fff3;
+      }
+      .studio-nav { gap: clamp(.85rem, 2.4vw, 2rem); color: var(--muted); font-size: .92rem; }
+      .studio-nav a:hover, .studio-nav a[aria-current], .studio-resume.current summary { color: var(--accent-strong); }
+      .studio-nav-contact {
+        padding: .55rem .95rem;
+        border: 1px solid #665779;
+        border-radius: .6rem;
+        color: var(--text);
+      }
+      .studio-resume { position: relative; }
+      .studio-resume summary { cursor: pointer; white-space: nowrap; }
+      .studio-dropdown {
+        display: grid;
+        gap: .2rem;
+        position: absolute;
+        z-index: 2;
+        top: calc(100% + .55rem);
+        right: 0;
+        min-width: 11rem;
+        padding: .45rem;
+        border: 1px solid var(--line);
+        border-radius: .65rem;
+        background: #211a2e;
+        box-shadow: 0 12px 36px #0008;
+      }
+      .studio-dropdown a { padding: .45rem .55rem; border-radius: .35rem; }
+      .studio-dropdown a:hover, .studio-dropdown a[aria-current] { background: #342747; }
 
-      /* Highlight the top edge and shade the lower edge to give controls depth. */
-      :is(.nav-link, .social-row a, .profile-info-toggle, .project-card a:not(.cv-preview-link), .mobile-link) {
-        background-image: linear-gradient(165deg, #c8b5ff18, #261f350a 48%, #100c19aa);
-        box-shadow: inset 0 1px #ece1ff35, inset 0 -3px #09071180, 0 2px 3px #08061055;
+      .studio-main > .panel-section { margin: 0; padding: 3.5rem 0; border: 0; background: none; box-shadow: none; }
+      .studio-main > .studio-home { padding: 0; }
+      .studio-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }
+      .studio-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 2.9rem;
+        padding: .68rem 1rem;
+        border: 1px solid #726483;
+        border-radius: .65rem;
+        color: var(--text);
+        background: #211b2a;
+        font-size: .91rem;
+        font-weight: 650;
+        transition: transform 180ms ease, background 180ms ease;
       }
+      .studio-button:hover { transform: translateY(-2px); background: #342742; }
+      .studio-primary { background: var(--lime); border-color: var(--lime); color: #192011; }
+      .studio-primary:hover { background: #efffc9; }
+      .studio-footer {
+        border-top: 1px solid var(--line);
+        background: radial-gradient(ellipse at 74% -15%, #3d2b5e, transparent 70%), #171322;
+      }
+      .studio-footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 1.5rem 2rem; align-items: center; padding-block: 2.8rem; }
+      .studio-footer .social-row { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; padding: 0; border: 0; }
+      .studio-footer .social-row a { width: 2.3rem; height: 2.3rem; margin: 0; }
+      .studio-footer .studio-actions { margin-top: 1rem; }
+      .studio-main > .panel-section:not(.studio-home) .section-head h2 { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.05em; }
+      .studio-main > .panel-section:not(.studio-home) :is(.section-intro, .project-card p:not(.project-type), .timeline-card p, .resume-card p, .resume-card li, .skill-group li) { font-size: 1rem; line-height: 1.65; }
 
-      :is(.stat-icon, .resume-icon, .profile-list dt span) {
-        background-image: linear-gradient(145deg, #695687, #392e4c 52%, #231c32);
-        box-shadow: inset 1px 1px #e5d6ff66, inset -1px -2px #150e22, 0 3px 0 #17121f, 0 5px 10px #09060e66;
-      }
-      :is(.stat-icon, .resume-icon, .profile-list dt span, .nav-link, .social-row a) svg {
-        filter: drop-shadow(0 1px 0 #4c3866) drop-shadow(0 2px 1px #08050d88);
-      }
 
-      @media (prefers-reduced-motion: no-preference) {
-        :is(.nav-link, .social-row a, .profile-info-toggle, .mobile-link, .project-card a:not(.cv-preview-link)) {
-          transition: transform 160ms ease-out, box-shadow 160ms ease-out, color 160ms ease-out;
-        }
-        @media (hover: hover) and (pointer: fine) {
-          :is(.nav-link, .social-row a, .project-card a:not(.cv-preview-link)):hover {
-            transform: perspective(420px) translateY(-2px) rotateX(5deg);
-            box-shadow: inset 0 1px #f4ecff66, inset 0 -3px #241a35, 0 5px 10px #0a061888;
-          }
-          :is(.stats-grid article:hover .stat-icon, .resume-card:hover .resume-icon, .profile-list div:hover dt span) {
-            transform: perspective(250px) translateY(-2px) rotateY(-12deg) rotateZ(-4deg);
-          }
-        }
-        :is(.nav-link, .social-row a, .profile-info-toggle, .mobile-link, .project-card a:not(.cv-preview-link)):active {
-          transform: translateY(1px) scale(.98);
-          box-shadow: inset 0 2px 4px #0c081d88;
-        }
-        .panel-section.active .section-head > span {
-          transform-origin: left;
-          animation: open-section-rule 420ms ease-out both;
-        }
-        @keyframes open-section-rule {
-          from { transform: scaleX(.15); }
-          to { transform: scaleX(1); }
-        }
+      .studio-main > .studio-home { padding: 0; }
+      .studio-header-inner { min-height: 4.5rem; }
+      .studio-name img { width: 2.55rem; height: 2.55rem; border-radius: 50%; object-fit: cover; }
+      .cover { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(2rem,5vw,6rem); align-items: center; padding: clamp(3rem,7vw,6rem) 0; }
+      .cover h1 { margin: .6rem 0 1rem; font-size: clamp(3rem,5.65vw,5.3rem); font-weight: 600; letter-spacing: -.065em; line-height: 1.01; }
+      .cover h1 em { font-family: Georgia, serif; font-weight: 400; color: var(--accent); }
+      .cover p { margin: 0; }
+      .byline { color: var(--lime); font-size: .91rem; }
+      .cover .deck { color: var(--muted); max-width: 46ch; line-height: 1.65; }
+      .feature { position:relative; margin: .6rem; padding: clamp(1.5rem,3vw,2.5rem); background: #ebe6fa; color: #261f32; border-radius: 3px; box-shadow: 6px 6px #6a5685, 12px 12px #392d49; }
+      .feature small, .work-kind { font-size: .8rem; font-weight: 650; letter-spacing: .07em; }
+      .feature h2 { margin: 1.5rem 0 .75rem; font: 500 clamp(2.3rem,4vw,3.5rem)/1 Georgia,serif; letter-spacing: -.04em; }
+      .feature p { font-size: 1rem; line-height: 1.6; }
+      .feature a, .case a, .all-work { display:inline-block; margin-top: 1.1rem; font-weight: 600; text-decoration:underline; text-underline-offset: .26em; }
+      .work-index { padding: 2rem 0 3.4rem; border-top: 1px solid var(--line); }
+      .work-index header { display:flex; align-items:baseline; flex-wrap:wrap; justify-content:space-between; margin-bottom:1.4rem; }
+      .work-index h2 { font-size:clamp(2rem,4vw,3rem); letter-spacing:-.05em; margin:0; }
+      .case { display:grid; grid-template-columns: 1fr 1.3fr auto; align-items:center; gap:1rem 2rem; border-top:1px solid var(--line); padding:1.5rem 0; }
+      .case h3 { font-size:1.45rem; margin:.2rem 0 0; }
+      .case p { color:var(--muted); margin:0; line-height:1.6; }
+      .case a, .all-work, .work-kind { color:var(--accent-strong); }
+      .case a { margin:0; }
+      .studio-button { box-shadow: 0 3px 0 #453550; }
+      .studio-primary { box-shadow: 0 3px 0 #7c8f50; }
+      .studio-button:active { transform:translateY(2px); }
+      @media (hover:hover) and (prefers-reduced-motion:no-preference) {
+        .feature { transition: transform .2s ease; }
+        .feature:hover { transform: perspective(900px) rotateY(-2deg) translateY(-2px); }
+      }
+      @media (max-width: 48rem) {
+        .studio-wrap { width:calc(100% - 2rem); }
+        .studio-header-inner { flex-wrap:wrap; gap:.5rem; padding:.7rem 0; }
+        .studio-nav { flex-wrap:wrap; gap:.95rem; }
+        .cover, .case, .studio-footer-inner { grid-template-columns:1fr; }
+        .feature { margin:0 .8rem .6rem 0; }
+        .case { gap:.6rem; }
+      }
+      @media (prefers-reduced-motion:reduce) {
+        .studio-button { transition:none; }
+        .studio-button:hover, .studio-button:active { transform:none; }
       }
     </style>
+    <noscript><style>.studio-main > .panel-section { display: block; }</style></noscript>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="site-shell">
-      <aside class="profile-card" aria-label="Profile">
-        <button class="profile-info-toggle" type="button" aria-label="Show profile information" aria-expanded="false" aria-controls="profile-info">
-          <i data-lucide="chevron-down"></i>
-        </button>
+    <header class="studio-header">
+      <div class="studio-wrap studio-header-inner">
+        <a class="studio-name" href="#about"><img src="assets/profile.jpg" alt=""> Mehedi Hassan</a>
+        <nav class="studio-nav" aria-label="Main navigation">
+          <a href="#about" aria-current="page">Home</a>
+          <a href="#contact">Projects</a>
+          <details class="studio-resume">
+            <summary>Resume</summary>
+            <div class="studio-dropdown">
+              <a href="#experience">Experience</a>
+              <a href="#education">Education</a>
+              <a href="#skills">Skills</a>
+              <a href="#projects">Certifications</a>
+              <a href="#publications">CV</a>
+            </div>
+          </details>
+          <a class="studio-nav-contact" href="#get-in-touch">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-        <div class="profile-photo-wrap">
-          <img src="assets/profile.jpg?v=5" alt="Mehedi Hassan" class="profile-photo" />
-        </div>
+    <main id="main" class="studio-wrap studio-main" tabindex="-1">
 
-        <div class="profile-intro">
-          <h1>Mehedi Hassan</h1>
-          <p class="role">SEO Analyser</p>
-        </div>
-
-        <div class="profile-divider"></div>
-
-        <dl class="profile-list" id="profile-info">
+      <section class="panel-section active studio-home" id="about" aria-labelledby="about-title">
+        <div class="cover">
           <div>
-            <dt><span><i data-lucide="map-pin"></i></span><em>Location</em></dt>
-            <dd>Bangladesh</dd>
-          </div>
-          <div>
-            <dt><span><i data-lucide="graduation-cap"></i></span><em>University</em></dt>
-            <dd>浙江工商大学 (Zhejiang Gongshang University)</dd>
-          </div>
-          <div>
-            <dt><span><i data-lucide="mail"></i></span><em>Email</em></dt>
-            <dd><a href="mailto:mahadi10104@gmail.com">mahadi10104@gmail.com</a></dd>
-          </div>
-          <div>
-            <dt><span><i data-lucide="message-circle"></i></span><em>WhatsApp</em></dt>
-            <dd><a href="https://wa.me/8801730665333">+880 1730665333</a></dd>
-          </div>
-        </dl>
-
-        <div class="social-row" aria-label="Social links">
-          <a href="https://www.facebook.com/mahadi.hasan.839667/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
-            <span class="social-mark">f</span>
-          </a>
-          <a href="https://www.linkedin.com/in/mahadi10104/?skipRedirect=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-            <span class="social-mark social-mark-wide">in</span>
-          </a>
-          <a href="https://github.com/Mhadihassan" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-            <svg class="brand-icon brand-github" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 .297C5.373.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.207 11.387.6.111.82-.26.82-.577v-2.234c-3.338.727-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.746.083-.731.083-.731 1.205.085 1.839 1.238 1.839 1.238 1.071 1.834 2.809 1.304 3.495.997.108-.776.419-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23A11.5 11.5 0 0 1 12 6.096c1.02.005 2.047.138 3.006.405 2.292-1.553 3.298-1.23 3.298-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.806 5.624-5.479 5.921.43.372.814 1.104.814 2.225v3.293c0 .32.216.694.825.576C20.565 22.092 24 17.596 24 12.297c0-6.627-5.373-12-12-12z" />
-            </svg>
-          </a>
-          <a href="https://www.fiverr.com/s/R7eZxjw" target="_blank" rel="noopener noreferrer" aria-label="Fiverr profile">
-            <svg class="brand-icon brand-fiverr" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z" />
-            </svg>
-          </a>
-          <a href="https://www.upwork.com/freelancers/~01d066b7ae5152c630" target="_blank" rel="noopener noreferrer" aria-label="Upwork profile">
-            <svg class="brand-icon brand-upwork" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" />
-            </svg>
-          </a>
-        </div>
-      </aside>
-
-      <main id="main" class="content-card">
-        <nav class="top-nav" aria-label="Primary navigation">
-          <button class="nav-link active" data-section="about">
-            <i data-lucide="user"></i>
-            About
-          </button>
-          <div class="nav-item resume-nav">
-            <button class="nav-link resume-toggle" data-section="experience" aria-haspopup="true" aria-expanded="false">
-              <i data-lucide="file-text"></i>
-              Resume
-              <i class="chevron" data-lucide="chevron-down"></i>
-            </button>
-            <div class="nav-dropdown" aria-label="Resume pages">
-              <button data-section="experience">
-                <i data-lucide="briefcase-business"></i>
-                Experience
-              </button>
-              <button data-section="education">
-                <i data-lucide="graduation-cap"></i>
-                Education
-              </button>
-              <button data-section="skills">
-                <i data-lucide="code-2"></i>
-                Skills
-              </button>
+            <p class="byline">Mehedi Hassan · SEO Analyser</p>
+            <h1 id="about-title">WordPress for<br><em>service businesses</em><br>and suppliers.</h1>
+            <p class="deck">I build WordPress sites and fix the search issues behind them. My work ranges from local service pages in Sydney to industrial parts catalogs in China.</p>
+            <div class="studio-actions">
+              <a class="studio-button studio-primary" href="#selected-work">Explore client work</a>
+              <a class="studio-button" href="mailto:mahadi10104@gmail.com">Discuss a project</a>
             </div>
           </div>
-          <button class="nav-link" data-section="projects">
-            <i data-lucide="badge-check"></i>
-            Certification
-            <i class="chevron" data-lucide="chevron-down"></i>
-          </button>
-          <button class="nav-link" data-section="contact">
-            <i data-lucide="code-2"></i>
-            Projects
-          </button>
-          <button class="nav-link" data-section="publications">
-            <i data-lucide="file-user"></i>
-            CV
-          </button>
-        </nav>
-
-        <section class="panel-section active" id="about" aria-labelledby="about-title">
-          <div class="section-head">
-            <h2 id="about-title">Digital Identity</h2>
-            <span></span>
-          </div>
-
-          <p class="value-statement">
-            I help businesses build clean <strong>WordPress</strong> websites
-            and improve the <strong>SEO</strong> foundation behind them, so
-            their sites are easier for customers to use and easier for
-            search engines to understand.
-          </p>
-
-          <div class="lead-copy">
-            <p>
-              I am Mehedi, a WordPress developer with
-              <strong>6 years</strong> of experience building, customizing,
-              fixing, and optimizing websites for businesses, blogs, and online
-              stores. I completed my graduation in China with a background in
-              Computer Science and Technology (CST).
-            </p>
-            <p>
-              Over the last Several years, I worked with a
-              China-based client on multiple WordPress
-              product/catalog websites in industries such as
-              elevator/lift spare parts,
-              electric tricycle parts, industrial parts, and
-              trading products.
-            </p>
-            <p>
-              I also recently built and worked on SEO for a
-              Sydney-based strata management service website,
-              including technical SEO fixes,
-              local SEO setup, website structure improvement,
-              local citation building, and link building
-              support.
-            </p>
-          </div>
-
-          <div class="tag-row">
-            <span><i data-lucide="code-2"></i> WordPress</span>
-            <span><i data-lucide="layout-template"></i> Elementor</span>
-            <span><i data-lucide="search-check"></i> Technical SEO</span>
-            <span><i data-lucide="shopping-cart"></i> WooCommerce</span>
-            <span><i data-lucide="link"></i> Link Building</span>
-            <span><i data-lucide="map-pin"></i> Citations</span>
-            <span><i data-lucide="shield-check"></i> Online Reputation Management</span>
-          </div>
-
-          <div class="stats-grid">
-            <article>
-              <div class="stat-icon"><i data-lucide="briefcase-business"></i></div>
-              <strong>6+</strong>
-              <span>Years of Experience</span>
-            </article>
-            <article>
-              <div class="stat-icon"><i data-lucide="rocket"></i></div>
-              <strong>20+</strong>
-              <span>Projects Shipped</span>
-            </article>
-            <article>
-              <div class="stat-icon"><i data-lucide="search-check"></i></div>
-              <strong>SEO</strong>
-              <span>Technical &amp; Local</span>
-            </article>
-            <article>
-              <div class="stat-icon"><i data-lucide="graduation-cap"></i></div>
-              <strong>CST</strong>
-              <span>Computer Science</span>
-            </article>
-          </div>
+          <article class="feature">
+            <small>Featured project · Sydney, Australia</small>
+            <h2>Professional<br>Strata Team</h2>
+            <p>Built a WordPress site for a strata management firm, organized its service pages, and added booking and enquiry forms. The SEO work included technical fixes and local citations.</p>
+            <a href="https://stratateam.com.au/" target="_blank" rel="noopener">Visit the strata website</a>
+          </article>
+        </div>
+        <section class="work-index" id="selected-work" aria-labelledby="work-title">
+          <header><h2 id="work-title">Selected client work</h2><a class="all-work" href="#contact">Browse all projects</a></header>
+          <article class="case"><div><span class="work-kind">Catalog SEO</span><h3>LiftPartsCN</h3></div><p>Revised product titles and descriptions, improved category pages, and linked related elevator and escalator parts.</p><a href="https://liftpartscn.com/" target="_blank" rel="noopener">View catalog</a></article>
+          <article class="case"><div><span class="work-kind">E-commerce</span><h3>Music Point</h3></div><p>Built a WordPress store for musical instruments, integrated payments, and set up Meta Pixel to track customer activity.</p><a href="https://musicpoint.com.bd/" target="_blank" rel="noopener">View store</a></article>
         </section>
-
+      </section>
         <section class="panel-section" id="experience" aria-labelledby="experience-title">
           <div class="section-head experience-head">
             <div>
@@ -918,34 +861,95 @@
             </article>
           </div>
         </section>
-      </main>
-    </div>
+    </main>
 
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-      <button class="mobile-link active" data-section="about">
-        <i data-lucide="user"></i>
-        <span>About</span>
-      </button>
-      <button class="mobile-link" data-section="experience">
-        <i data-lucide="briefcase-business"></i>
-        <span>Resume</span>
-      </button>
-      <button class="mobile-link" data-section="education">
-        <i data-lucide="graduation-cap"></i>
-        <span>Academy</span>
-      </button>
-      <button class="mobile-link" data-section="contact">
-        <i data-lucide="code-2"></i>
-        <span>Projects</span>
-      </button>
-      <button class="mobile-link" data-section="publications">
-        <i data-lucide="file-user"></i>
-        <span>CV</span>
-      </button>
-    </nav>
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <footer class="studio-footer" id="get-in-touch" aria-labelledby="studio-contact-title">
+      <div class="studio-wrap studio-footer-inner">
+        <div>
+          <h2 id="studio-contact-title">Let’s discuss your website.</h2>
+          <div class="studio-actions">
+            <a class="studio-button studio-primary" href="mailto:mahadi10104@gmail.com">Email me</a>
+            <a class="studio-button" href="https://wa.me/8801730665333">WhatsApp</a>
+          </div>
+        </div>
+        <div class="social-row" aria-label="Social links">
+          <a href="https://www.facebook.com/mahadi.hasan.839667/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
+            <span class="social-mark">f</span>
+          </a>
+          <a href="https://www.linkedin.com/in/mahadi10104/?skipRedirect=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+            <span class="social-mark social-mark-wide">in</span>
+          </a>
+          <a href="https://github.com/Mhadihassan" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+            <svg class="brand-icon brand-github" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .297C5.373.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.207 11.387.6.111.82-.26.82-.577v-2.234c-3.338.727-4.043-1.416-4.043-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.09-.746.083-.731.083-.731 1.205.085 1.839 1.238 1.839 1.238 1.071 1.834 2.809 1.304 3.495.997.108-.776.419-1.305.762-1.605-2.665-.304-5.466-1.333-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.536-1.524.117-3.176 0 0 1.008-.323 3.301 1.23A11.5 11.5 0 0 1 12 6.096c1.02.005 2.047.138 3.006.405 2.292-1.553 3.298-1.23 3.298-1.23.655 1.652.243 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.806 5.624-5.479 5.921.43.372.814 1.104.814 2.225v3.293c0 .32.216.694.825.576C20.565 22.092 24 17.596 24 12.297c0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+          <a href="https://www.fiverr.com/s/R7eZxjw" target="_blank" rel="noopener noreferrer" aria-label="Fiverr profile">
+            <svg class="brand-icon brand-fiverr" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z" />
+            </svg>
+          </a>
+          <a href="https://www.upwork.com/freelancers/~01d066b7ae5152c630" target="_blank" rel="noopener noreferrer" aria-label="Upwork profile">
+            <svg class="brand-icon brand-upwork" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="script.js?v=8"></script>
+    <script>
+      const pages = [...document.querySelectorAll(".studio-main > .panel-section")];
+      const pageLinks = [...document.querySelectorAll(".studio-nav a[href^='#']")];
+      const resume = document.querySelector(".studio-resume");
+
+      function showPage() {
+        const target = document.getElementById(location.hash.slice(1));
+        const page = pages.find(section => section === target || section.contains(target)) || pages[0];
+
+        if (target?.id !== "get-in-touch" && target?.id !== "main") {
+          pages.forEach(section => section.classList.toggle("active", section === page));
+        }
+
+        const active = pages.find(section => section.classList.contains("active"));
+        pageLinks.forEach(link => {
+          if (link.hash === "#" + active.id) link.setAttribute("aria-current", "page");
+          else link.removeAttribute("aria-current");
+        });
+        const resumeActive = resume.querySelector("[aria-current='page']");
+        resume.classList.toggle("current", Boolean(resumeActive));
+
+        if (target && target !== document.getElementById("main")) {
+          requestAnimationFrame(() => {
+            if (pages.includes(target)) {
+              const heading = document.getElementById(target.getAttribute("aria-labelledby"));
+              heading.setAttribute("tabindex", "-1");
+              heading.focus({ preventScroll: true });
+              window.scrollTo(0, 0);
+            } else {
+              target.scrollIntoView({ block: "start" });
+            }
+          });
+        }
+      }
+
+      document.querySelector(".studio-nav").addEventListener("click", event => {
+        if (event.target.closest("a")) resume.open = false;
+      });
+      document.addEventListener("click", event => {
+        if (!resume.contains(event.target)) resume.open = false;
+      });
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && resume.open) {
+          resume.open = false;
+          resume.querySelector("summary").focus();
+        }
+      });
+      window.addEventListener("hashchange", showPage);
+      showPage();
+
+      if (window.lucide) window.lucide.createIcons();
+
+    </script>
   </body>
 </html>
