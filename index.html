@@ -22,7 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css?v=60" />
+    <link rel="stylesheet" href="style.css?v=61" />
     <style>
       :root {
         --bg: #100f16;
@@ -30,9 +30,9 @@
         --panel-2: #211e2d;
         --panel-3: #252236;
         --line: #383349;
-        --text: #f8f6ff;
-        --muted: #c7c0d4;
-        --soft: #e4ddef;
+        --text: #fff;
+        --muted: var(--text);
+        --soft: var(--text);
         --accent: #c8b5ff;
         --accent-2: #ad91ff;
         --accent-rgb: 200, 181, 255;
@@ -48,9 +48,9 @@
       .top-nav, .mobile-nav { background-color: rgb(25 23 35 / 94%); }
       .nav-dropdown { background-color: #211a2e; }
       .profile-info-toggle { background-color: #191723; }
-      .nav-link.active, .mobile-link.active { color: var(--lime); }
-      .nav-link.active::after, .section-head span, .primary-btn, .skip-link { background-color: var(--lime); }
-      .primary-btn, .skip-link { color: #192011; }
+      .nav-link.active, .mobile-link.active { color: var(--text); }
+      .nav-link.active::after, .section-head span { background-color: var(--lime); }
+
 
       #about .value-statement strong,
       #about .lead-copy strong {
@@ -112,10 +112,10 @@
       .work-photo { margin:0; height:155px; overflow:hidden; background-position:center; background-size:cover; }
       .work-photo img { display:block; width:100%; height:100%; object-fit:cover; }
       .work-copy { display:flex; flex:1; flex-direction:column; align-items:flex-start; padding:20px; gap:8px; }
-      .work-copy small { color:var(--accent); font-size:.72rem; font-weight:600; letter-spacing:.045em; }
+      .work-copy small { color:var(--text); font-size:.72rem; font-weight:600; letter-spacing:.045em; }
       .work-copy h4 { margin:0; font-size:1.2rem; line-height:1.2; color:var(--text); }
       .work-copy p { margin:0 0 8px; font-size:.88rem; line-height:1.6; color:var(--muted); }
-      .work-copy a { margin-top:auto; min-height:42px; display:inline-flex; align-items:center; gap:10px; color:var(--lime); font-size:.83rem; text-decoration:none; }
+      .work-copy a { margin-top:auto; min-height:42px; display:inline-flex; align-items:center; gap:10px; color:var(--text); font-size:.83rem; text-decoration:none; }
       .work-copy a:hover { text-decoration:underline; }
       .work-feature { grid-column:1/-1; background:linear-gradient(135deg,#31263b,#1d1925); }
       .work-feature .work-photo { height:260px; }
