@@ -138,6 +138,19 @@
           inset: 0;
         }
       }
+      #about .stats-grid article, #contact .work-tile {
+        border-color: #393744;
+        box-shadow: none;
+        transition: border-color 220ms ease, box-shadow 220ms ease;
+      }
+      #about .stats-grid article { background: var(--panel-2); }
+      #about .stats-grid article::before { opacity: 0; }
+      #about .stats-grid article:hover { transform: none; }
+      #about .stats-grid article:hover, #contact .work-tile:hover,
+      #contact .work-tile:focus-within {
+        border-color: #447585;
+        box-shadow: 0 0 26px rgba(93, 206, 229, .15);
+      }
     </style>
   </head>
   <body>
