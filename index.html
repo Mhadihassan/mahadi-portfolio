@@ -104,33 +104,25 @@
         }
       }
 
-      #contact .client-projects { margin: 36px 0 0; text-align: left; }
-      #contact .client-projects > h3 { display:flex; align-items:center; gap:14px; margin:0 0 14px; font-size:1.1rem; font-weight:600; color:var(--text); }
-      #contact .client-projects > h3::after { content:""; height:1px; flex:1; background:#51465d; }
-      #contact .work-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr)); gap:16px; }
-      .work-tile { background:#22202d; border:1px solid #423b50; border-radius:16px; overflow:hidden; display:flex; flex-direction:column; min-width:0; }
-      .work-photo { margin:0; height:155px; overflow:hidden; background-position:center; background-size:cover; }
+      #portfolio-title { font-size:clamp(2.7rem,7vw,5rem); line-height:1; letter-spacing:-.065em; }
+      #contact .client-projects { margin-top:38px; }
+      #contact .client-projects > h3 { border-top:1px solid #635e70; padding-top:14px; margin:0 0 20px; font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; }
+      #contact .work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px 20px; }
+      .work-tile { display:flex; flex-direction:column; min-width:0; }
+      .work-photo { aspect-ratio:4/3; overflow:hidden; border-radius:10px; background-size:cover; background-position:center; }
       .work-photo img { display:block; width:100%; height:100%; object-fit:cover; }
-      .work-copy { display:flex; flex:1; flex-direction:column; align-items:flex-start; padding:20px; gap:8px; }
-      .work-copy small { color:var(--text); font-size:.72rem; font-weight:600; letter-spacing:.045em; }
-      .work-copy h4 { margin:0; font-size:1.2rem; line-height:1.2; color:var(--text); }
-      .work-copy p { margin:0 0 8px; font-size:.88rem; line-height:1.6; color:var(--muted); }
-      .work-copy a { margin-top:auto; min-height:42px; display:inline-flex; align-items:center; gap:10px; color:var(--text); font-size:.83rem; text-decoration:none; }
-      .work-copy a:hover { text-decoration:underline; }
-      .work-feature { grid-column:1/-1; background:linear-gradient(135deg,#31263b,#1d1925); }
-      .work-feature .work-photo { height:260px; }
-      .work-feature .work-photo img { object-position:center 47%; }
-      .work-feature h4 { font-size:clamp(2rem,4vw,3.2rem); letter-spacing:-.04em; }
-      @media(min-width:700px) {
-        .work-feature,.work-grid > :only-child { display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr); }
-        .work-feature .work-photo,.work-grid > :only-child .work-photo { height:100%; min-height:220px; }
-        .work-feature .work-copy,.work-grid > :only-child .work-copy { justify-content:center; padding:28px; }
-        .work-feature .work-copy a,.work-grid > :only-child .work-copy a { margin-top:4px; }
-      }
-      @media(hover:hover) and (prefers-reduced-motion:no-preference) {
-        .work-photo img { transition:transform 350ms ease; }
-        .work-tile:hover .work-photo img { transform:scale(1.035); }
-      }
+      .work-copy { padding:14px 0; display:grid; gap:7px; justify-items:start; }
+      .work-copy small { font-size:.75rem; letter-spacing:.05em; }
+      .work-copy h4 { margin:0; font-size:clamp(1.4rem,3vw,2rem); line-height:1.12; letter-spacing:-.04em; }
+      .work-copy p { margin:0; max-width:53ch; line-height:1.55; }
+      .work-copy a { display:inline-flex; align-items:center; gap:8px; min-height:42px; text-decoration:underline; text-underline-offset:5px; }
+      .work-copy a:hover { text-decoration-thickness:2px; }
+      .work-feature { grid-column:1/-1; display:grid; isolation:isolate; overflow:hidden; border-radius:14px; background:#17141e; }
+      .work-feature > * { grid-area:1/1; }
+      .work-feature .work-photo { aspect-ratio:auto; min-height:clamp(330px,40vw,460px); border-radius:0; }
+      .work-feature .work-copy { align-content:end; padding:clamp(20px,4vw,38px); background:linear-gradient(0deg,#100c16 0%,rgba(16,12,22,.93) 24%,transparent 85%); }
+      .work-feature h4 { font-size:clamp(2.5rem,6vw,4.5rem); }
+      @media (max-width:640px) { #contact .work-grid { grid-template-columns:minmax(0,1fr); gap:20px; } }
     </style>
   </head>
   <body>
