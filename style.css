@@ -1672,3 +1672,37 @@ h1 {
     gap: 2px;
   }
 }
+
+/* Use pure white for portfolio text across sections and navigation states. */
+:root {
+  --text: #fff;
+  --muted: var(--text);
+  --soft: var(--text);
+}
+
+.eyebrow,
+.role,
+.nav-link:hover,
+.nav-link.active,
+.nav-dropdown button:hover,
+.nav-dropdown button.active,
+.value-statement strong,
+.lead-copy strong,
+.lead-copy a,
+.tag-row span:hover,
+.stats-grid strong,
+.experience-label,
+.resume-card time,
+.project-type,
+.project-card a,
+.ghost-btn,
+.mobile-nav .mobile-link.active {
+  color: var(--text);
+}
+
+/* Keep white labels legible on filled controls. */
+.skip-link,
+.primary-btn {
+  background: #14596a;
+  color: var(--text);
+}
