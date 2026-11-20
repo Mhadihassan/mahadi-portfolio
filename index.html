@@ -114,6 +114,21 @@
       .work-copy h4 { margin:0; font-size:1.4rem; line-height:1.2; letter-spacing:-.03em; }
       .work-copy small { border:1px solid #615667; border-radius:20px; padding:3px 9px; font-size:.72rem; }
       .work-copy details { width:100%; }
+      .work-copy details[open] p {
+        padding: 12px 14px;
+        border-left: 2px solid var(--lime);
+        border-radius: 0 8px 8px 0;
+        background: rgba(255, 255, 255, .06);
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        #contact .work-tile:has(details[open]) {
+          animation: project-detail-flip 380ms ease-out;
+        }
+        @keyframes project-detail-flip {
+          from { transform: perspective(1200px) rotateY(-55deg); opacity: .6; }
+          to { transform: perspective(1200px) rotateY(0); opacity: 1; }
+        }
+      }
       .work-copy summary { cursor:pointer; padding:6px 0; font-weight:600; }
       .work-copy p { line-height:1.65; margin:6px 0; }
       .work-copy a { margin-top:auto; display:inline-flex; align-items:center; gap:8px; min-height:40px; text-decoration:underline; text-underline-offset:4px; }
