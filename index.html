@@ -251,7 +251,28 @@
       #skills .skills-card-head h3 { margin: 0; }
       #skills .skills-count, #skills .skills-list li { border: 1px solid var(--line); border-radius: 999px; }
       #skills .skills-count { background: var(--panel-3); color: #c1b6d0; font-size: .73rem; padding: 2px 8px; }
-      #skills .skills-category:hover .skills-count { border-color: #9b85bc; }
+      @media (hover: hover) {
+        #skills .skills-category:hover {
+          border-color: #9b85bc;
+          box-shadow: 0 0 24px #a78ac82b;
+        }
+        #skills .skills-category:hover .skills-card-head svg {
+          border-color: #9b85bc;
+          box-shadow: 0 0 14px #a78ac84d;
+        }
+        #skills .skills-category:hover .skills-count { border-color: #9b85bc; }
+        #skills .skills-list li:hover {
+          color: #fff;
+          background: #31283e;
+          border-color: #b49bd7;
+          box-shadow: 0 0 10px #a78ac840;
+        }
+      }
+      @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+        #skills .skills-card-head svg, #skills .skills-count, #skills .skills-list li {
+          transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
+        }
+      }
     </style>
   </head>
   <body>
