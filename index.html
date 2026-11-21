@@ -193,6 +193,53 @@
         text-decoration: none;
       }
       #contact .work-copy a:hover, #contact .work-copy a:focus-visible { background: #39304b; }
+      /* Primary navigation */
+      .top-nav {
+        top: 12px;
+        width: fit-content;
+        max-width: calc(100% - 24px);
+        margin: 12px 12px 0 auto;
+        padding: 5px;
+        gap: 4px;
+        border: 1px solid #514666;
+        border-radius: 999px;
+        background: #211c2ef5;
+        box-shadow: 0 10px 26px #0b081657;
+        backdrop-filter: blur(14px);
+      }
+      .top-nav .nav-link {
+        height: auto;
+        min-height: 44px;
+        padding: 0 clamp(8px, 1vw, 16px);
+        gap: 6px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: transparent;
+        box-shadow: none;
+        transform: none;
+        white-space: nowrap;
+        color: #e7ddf6;
+      }
+      .top-nav .nav-link:hover,
+      .top-nav .nav-link[aria-expanded="true"] {
+        background: #3a304b;
+        color: #fff;
+      }
+      .top-nav .nav-link.active {
+        border-color: #806ba4;
+        background: #4a3a62;
+        color: #fff;
+      }
+      .top-nav .nav-link.active::after { content: none; }
+      .top-nav .nav-link > svg { width: 15px; height: 15px; flex: none; }
+      .top-nav .nav-link > svg.chevron { width: 12px; height: 12px; }
+      .top-nav .nav-dropdown {
+        border: 1px solid #514666;
+        border-radius: 14px;
+        background: #272035;
+        box-shadow: 0 12px 25px #0b081675;
+      }
+      .top-nav button:focus-visible { outline: 2px solid #d9c5ff; outline-offset: 2px; }
     </style>
   </head>
   <body>
@@ -289,7 +336,6 @@
           <button class="nav-link" data-section="projects">
             <i data-lucide="badge-check"></i>
             Certification
-            <i class="chevron" data-lucide="chevron-down"></i>
           </button>
           <button class="nav-link" data-section="contact">
             <i data-lucide="code-2"></i>
