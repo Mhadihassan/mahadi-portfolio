@@ -233,6 +233,48 @@
         border-color: #806ba4;
         box-shadow: none;
       }
+      #skills .skills-directory {
+        border-bottom: 1px solid var(--line);
+      }
+      #skills .skills-category {
+        display: grid;
+        grid-template-columns: minmax(155px, 1fr) minmax(0, 2.45fr);
+        gap: 24px;
+        padding: 24px 0;
+        border-top: 1px solid var(--line);
+      }
+      #skills .skills-category h3 {
+        display: flex;
+        align-items: flex-start;
+        gap: 9px;
+        margin: 0;
+        color: var(--accent);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      #skills .skills-category h3 svg {
+        flex: 0 0 17px;
+        width: 17px;
+        height: 17px;
+        margin-top: 3px;
+      }
+      #skills .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px 18px;
+        margin: 0;
+        padding-left: 17px;
+        color: #ede7f5;
+        font-size: .9rem;
+        line-height: 1.5;
+      }
+      #skills .skills-list li::marker { color: var(--accent); }
+      @media (max-width: 660px) {
+        #skills .skills-category { grid-template-columns: minmax(0, 1fr); gap: 13px; padding: 18px 0; }
+      }
+      @media (max-width: 380px) {
+        #skills .skills-list { grid-template-columns: minmax(0, 1fr); }
+      }
     </style>
   </head>
   <body>
@@ -687,66 +729,61 @@
             <span></span>
           </div>
 
-          <p class="section-intro">
-            Core tools and service areas used across WordPress website builds,
-            technical SEO improvements, local SEO, and ongoing website support.
-          </p>
-
-          <div class="skill-groups">
-            <article class="skill-group">
+          <div class="skills-directory">
+            <article class="skills-category">
               <h3><i data-lucide="layout-template"></i> WordPress Website</h3>
-              <div class="tag-row">
-                <span><i data-lucide="code-2"></i> WordPress</span>
-                <span><i data-lucide="network"></i> Headless WordPress</span>
-                <span><i data-lucide="layout-panel-top"></i> Elementor</span>
-                <span><i data-lucide="shopping-cart"></i> WooCommerce</span>
-                <span><i data-lucide="monitor-smartphone"></i> Responsive Design</span>
-                <span><i data-lucide="palette"></i> Theme Customization</span>
-                <span><i data-lucide="file-plus-2"></i> Page Setup</span>
-                <span><i data-lucide="form-input"></i> Contact Forms</span>
-                <span><i data-lucide="shield-check"></i> Website Maintenance</span>
-              </div>
+              <ul class="skills-list">
+                <li>WordPress</li>
+                <li>Headless WordPress</li>
+                <li>Elementor</li>
+                <li>WooCommerce</li>
+                <li>Responsive Design</li>
+                <li>Theme Customization</li>
+                <li>Page Setup</li>
+                <li>Contact Forms</li>
+                <li>Website Maintenance</li>
+              </ul>
             </article>
-            <article class="skill-group">
+            <article class="skills-category">
               <h3><i data-lucide="search-check"></i> SEO</h3>
-              <div class="tag-row">
-                <span><i data-lucide="wrench"></i> Technical SEO</span>
-                <span><i data-lucide="file-search"></i> On-Page SEO</span>
-                <span><i data-lucide="map-pin"></i> Local SEO</span>
-                <span><i data-lucide="link"></i> Link Building</span>
-                <span><i data-lucide="tags"></i> Meta Title &amp; Description</span>
-                <span><i data-lucide="network"></i> Internal Linking</span>
-                <span><i data-lucide="image"></i> Image Alt Text</span>
-                <span><i data-lucide="list-tree"></i> Sitemap &amp; Indexing</span>
-              </div>
+              <ul class="skills-list">
+                <li>Technical SEO</li>
+                <li>On-Page SEO</li>
+                <li>Local SEO</li>
+                <li>Link Building</li>
+                <li>Meta Title &amp; Description</li>
+                <li>Internal Linking</li>
+                <li>Image Alt Text</li>
+                <li>Sitemap &amp; Indexing</li>
+              </ul>
             </article>
-            <article class="skill-group">
+            <article class="skills-category">
               <h3><i data-lucide="settings-2"></i> Website Support</h3>
-              <div class="tag-row">
-                <span><i data-lucide="gauge"></i> Speed Improvement</span>
-                <span><i data-lucide="shield-check"></i> ORM</span>
-                <span><i data-lucide="bar-chart-3"></i> Analytics Basics</span>
-                <span><i data-lucide="bug"></i> Bug Fixing</span>
-                <span><i data-lucide="smartphone"></i> Mobile Layout Fixes</span>
-                <span><i data-lucide="refresh-cw"></i> Website Updates</span>
-                <span><i data-lucide="settings-2"></i> cPanel Management</span>
-                <span><i data-lucide="file-cog"></i> Plugin Setup</span>
-                <span><i data-lucide="database"></i> Backup Basics</span>
-              </div>
+              <ul class="skills-list">
+                <li>Speed Improvement</li>
+                <li>ORM</li>
+                <li>Analytics Basics</li>
+                <li>Bug Fixing</li>
+                <li>Mobile Layout Fixes</li>
+                <li>Website Updates</li>
+                <li>cPanel Management</li>
+                <li>Plugin Setup</li>
+                <li>Backup Basics</li>
+              </ul>
             </article>
-            <article class="skill-group">
+            <article class="skills-category">
               <h3><i data-lucide="briefcase-business"></i> Business Website Services</h3>
-              <div class="tag-row">
-                <span><i data-lucide="building-2"></i> Business Websites</span>
-                <span><i data-lucide="code-2"></i> Custom Website Development</span>
-                <span><i data-lucide="mouse-pointer-click"></i> Landing Pages</span>
-                <span><i data-lucide="shopping-bag"></i> Product Catalogs</span>
-                <span><i data-lucide="pen-line"></i> Content Formatting</span>
-                <span><i data-lucide="message-square-text"></i> CTA Sections</span>
-                <span><i data-lucide="star"></i> Trust Sections</span>
-                <span><i data-lucide="map"></i> Citation Building</span>
-                <span><i data-lucide="clipboard-check"></i> Website Audit</span>
-              </div>
+              <ul class="skills-list">
+                <li>Business Websites</li>
+                <li>Custom Website Development</li>
+                <li>Landing Pages</li>
+                <li>Product Catalogs</li>
+                <li>Content Formatting</li>
+                <li>CTA Sections</li>
+                <li>Trust Sections</li>
+                <li>Citation Building</li>
+                <li>Website Audit</li>
+              </ul>
             </article>
           </div>
         </section>
@@ -1055,13 +1092,19 @@
       }
     </script>
     <script>
-      function openLinkedProjects() {
+      function openLinkedSection() {
+        if (location.hash === '#skills') {
+          if (!document.querySelector('#skills').getClientRects().length) {
+            document.querySelector('.nav-dropdown [data-section="skills"]').click();
+          }
+          return;
+        }
         if (location.hash !== '#contact') return;
         const projects = document.querySelector('.nav-link[data-section="contact"]');
         if (projects && !projects.classList.contains('active')) projects.click();
       }
-      window.addEventListener('load', openLinkedProjects, { once: true });
-      window.addEventListener('hashchange', openLinkedProjects);
+      window.addEventListener('load', openLinkedSection, { once: true });
+      window.addEventListener('hashchange', openLinkedSection);
     </script>
   </body>
 </html>
