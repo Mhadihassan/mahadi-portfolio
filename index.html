@@ -252,16 +252,20 @@
       #skills .skills-count, #skills .skills-list li { border: 1px solid var(--line); border-radius: 999px; }
       #skills .skills-count { background: var(--panel-3); color: #c1b6d0; font-size: .73rem; padding: 2px 8px; }
       @media (hover: hover) {
-        #skills .skills-category:hover {
+        #skills .skills-category:hover,
+        #main :is(.resume-card, .service-card, .project-card, .stats-grid article, .work-tile):hover {
           border-color: #9b85bc;
           box-shadow: 0 0 24px #a78ac82b;
         }
-        #skills .skills-category:hover .skills-card-head svg {
+        #skills .skills-category:hover .skills-card-head svg,
+        #main :is(.resume-card, .service-card, .project-card, .stats-grid article, .work-tile):hover :is(.resume-icon, .stat-icon) {
           border-color: #9b85bc;
           box-shadow: 0 0 14px #a78ac84d;
         }
         #skills .skills-category:hover .skills-count { border-color: #9b85bc; }
-        #skills .skills-list li:hover {
+        #skills .skills-list li:hover,
+        .tag-row > span:hover,
+        .experience-tags > span:hover {
           color: #fff;
           background: #31283e;
           border-color: #b49bd7;
@@ -269,7 +273,8 @@
         }
       }
       @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-        #skills .skills-card-head svg, #skills .skills-count, #skills .skills-list li {
+        #skills .skills-card-head svg, #skills .skills-count, #skills .skills-list li, .tag-row > span, .experience-tags > span,
+        #main :is(.resume-card, .service-card, .project-card, .stats-grid article, .work-tile, .resume-icon, .stat-icon) {
           transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease, color .2s ease;
         }
       }
