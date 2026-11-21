@@ -290,6 +290,21 @@
       #experience .experience-links a,
       #experience .experience-core li > span { font-weight: 400; color: var(--accent); background: var(--panel-3); border: 1px solid var(--line); padding: 5px 11px; border-radius: 999px; font-size: .8rem; }
       #experience .experience-links a:is(:hover, :focus-visible) { border-color: var(--accent); color: var(--text); }
+      #projects .certification-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 7px 16px; padding: 15px 18px; border-radius: 15px; }
+      #projects .certification-featured { padding: 24px; border-color: #806ba4; }
+      #projects .credential-heading { display: flex; gap: 12px; align-items: center; min-width: 0; }
+      #projects .credential-heading :is(h3,h4) { margin: 0; font-size: 1rem; }
+      #projects .certification-featured h3 { font-size: 1.3rem; }
+      #projects .credential-icon { display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 38px; border-radius: 10px; border: 1px solid var(--line); color: var(--accent); background: var(--panel-3); }
+      #projects .credential-icon svg, #projects .credential-link svg { width: 17px; height: 17px; }
+      #projects .credential-provider { color: var(--accent); font-size: .82rem; margin: 2px 0 0; }
+      #projects .credential-info { grid-column: 1 / -1; font-size: .83rem; }
+      #projects .credential-info p { margin: 0; }
+      #projects .credential-link { display: inline-flex; align-items: center; gap: 6px; justify-self: end; padding: 4px 0; color: var(--accent); background: transparent; box-shadow: none; border: 0; font-size: .82rem; text-decoration: underline; text-underline-offset: 3px; }
+      @media (max-width: 560px) {
+        #projects .certification-card { grid-template-columns: minmax(0, 1fr); }
+        #projects .credential-link { justify-self: start; grid-row: 3; }
+      }
     </style>
   </head>
   <body>
@@ -747,11 +762,10 @@
           </div>
 
           <div class="project-list">
-            <article class="project-card certification-card">
-              <div>
-                <p class="project-type">Digital Marketing</p>
-                <h3>Digital Marketing Pro</h3>
-                <dl class="cert-meta">
+            <article class="project-card certification-card certification-featured">
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h3>Digital Marketing Pro</h3><p class="credential-provider">American Marketing Association + Digital Marketing Institute</p></div></div>
+              
+              <div class="credential-info"><dl class="cert-meta">
                   <div>
                     <dt>Provider</dt>
                     <dd>American Marketing Association (AMA) + Digital Marketing Institute</dd>
@@ -773,14 +787,12 @@
                   Google Ads (PPC), display and video advertising, email
                   marketing, website optimization, Google Analytics, and digital
                   marketing strategy.
-                </p>
-              </div>
+                </p></div>
             </article>
             <article class="project-card certification-card">
-              <div>
-                <p class="project-type">WordPress Development</p>
-                <h3>WordPress Developer</h3>
-                <dl class="cert-meta">
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h3>WordPress Developer</h3><p class="credential-provider">Coders Foundation</p></div></div>
+              
+              <div class="credential-info"><dl class="cert-meta">
                   <div>
                     <dt>Provider</dt>
                     <dd>Coders Foundation</dd>
@@ -800,53 +812,37 @@
                   WordPress development topics simple, practical, and engaging,
                   while helping learners quickly build the skills needed for
                   professional website work.
-                </p>
-              </div>
+                </p></div>
             </article>
           </div>
         <div aria-labelledby="recommended-certifications-title" style="margin-top: 28px;">
             <h3 id="recommended-certifications-title">Recommended Certifications</h3>
             <div class="project-list">
               <article class="project-card certification-card">
-                <div>
-                  <p class="project-type">Google Skillshop</p>
-                  <h4>Google Analytics Certification</h4>
-                  <p>GA4, website analytics, traffic analysis, and reporting.</p>
-                  <a href="https://skillshop.withgoogle.com/" aria-label="Explore Google Analytics Certification at Google Skillshop">Visit Google Skillshop</a>
-                </div>
-              </article>
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h4>Google Analytics Certification</h4><p class="credential-provider">Google Skillshop</p></div></div>
+              <a class="credential-link" href="https://skillshop.withgoogle.com/" aria-label="Explore Google Analytics Certification at Google Skillshop">Visit Google Skillshop <i data-lucide="external-link" aria-hidden="true"></i></a>
+              <div class="credential-info"><p>GA4, website analytics, traffic analysis, and reporting.</p></div>
+            </article>
               <article class="project-card certification-card">
-                <div>
-                  <p class="project-type">Semrush Academy</p>
-                  <h4>SEO Fundamentals Certification</h4>
-                  <p>Technical SEO, keyword research, backlink analysis, and website optimization.</p>
-                  <a href="https://www.semrush.com/academy/" aria-label="Explore SEO Fundamentals Certification at Semrush Academy">Visit Semrush Academy</a>
-                </div>
-              </article>
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h4>SEO Fundamentals Certification</h4><p class="credential-provider">Semrush Academy</p></div></div>
+              <a class="credential-link" href="https://www.semrush.com/academy/" aria-label="Explore SEO Fundamentals Certification at Semrush Academy">Visit Semrush Academy <i data-lucide="external-link" aria-hidden="true"></i></a>
+              <div class="credential-info"><p>Technical SEO, keyword research, backlink analysis, and website optimization.</p></div>
+            </article>
               <article class="project-card certification-card">
-                <div>
-                  <p class="project-type">HubSpot Academy</p>
-                  <h4>SEO Certification</h4>
-                  <p>SEO strategy, content optimization, and search engine visibility.</p>
-                  <a href="https://academy.hubspot.com/" aria-label="Explore SEO Certification at HubSpot Academy">Visit HubSpot Academy</a>
-                </div>
-              </article>
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h4>SEO Certification</h4><p class="credential-provider">HubSpot Academy</p></div></div>
+              <a class="credential-link" href="https://academy.hubspot.com/" aria-label="Explore SEO Certification at HubSpot Academy">Visit HubSpot Academy <i data-lucide="external-link" aria-hidden="true"></i></a>
+              <div class="credential-info"><p>SEO strategy, content optimization, and search engine visibility.</p></div>
+            </article>
               <article class="project-card certification-card">
-                <div>
-                  <p class="project-type">freeCodeCamp</p>
-                  <h4>Responsive Web Design Certification</h4>
-                  <p>HTML, CSS, responsive layouts, and frontend development.</p>
-                  <a href="https://www.freecodecamp.org/learn/" aria-label="Explore Responsive Web Design Certification at freeCodeCamp">Visit freeCodeCamp</a>
-                </div>
-              </article>
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h4>Responsive Web Design Certification</h4><p class="credential-provider">freeCodeCamp</p></div></div>
+              <a class="credential-link" href="https://www.freecodecamp.org/learn/" aria-label="Explore Responsive Web Design Certification at freeCodeCamp">Visit freeCodeCamp <i data-lucide="external-link" aria-hidden="true"></i></a>
+              <div class="credential-info"><p>HTML, CSS, responsive layouts, and frontend development.</p></div>
+            </article>
               <article class="project-card certification-card">
-                <div>
-                  <p class="project-type">Meta Blueprint</p>
-                  <h4>Meta Social Media Marketing</h4>
-                  <p>Social media marketing, advertising, and campaign management.</p>
-                  <a href="https://www.facebook.com/business/learn" aria-label="Explore Meta Social Media Marketing at Meta Blueprint">Visit Meta Blueprint</a>
-                </div>
-              </article>
+              <div class="credential-heading"><span class="credential-icon" aria-hidden="true"><i data-lucide="award"></i></span><div><h4>Meta Social Media Marketing</h4><p class="credential-provider">Meta Blueprint</p></div></div>
+              <a class="credential-link" href="https://www.facebook.com/business/learn" aria-label="Explore Meta Social Media Marketing at Meta Blueprint">Visit Meta Blueprint <i data-lucide="external-link" aria-hidden="true"></i></a>
+              <div class="credential-info"><p>Social media marketing, advertising, and campaign management.</p></div>
+            </article>
             </div>
           </div>
         </section>
