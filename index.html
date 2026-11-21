@@ -233,48 +233,15 @@
         border-color: #806ba4;
         box-shadow: none;
       }
-      #skills .skills-directory {
-        border-bottom: 1px solid var(--line);
-      }
-      #skills .skills-category {
-        display: grid;
-        grid-template-columns: minmax(155px, 1fr) minmax(0, 2.45fr);
-        gap: 24px;
-        padding: 24px 0;
-        border-top: 1px solid var(--line);
-      }
-      #skills .skills-category h3 {
-        display: flex;
-        align-items: flex-start;
-        gap: 9px;
-        margin: 0;
-        color: var(--accent);
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-      #skills .skills-category h3 svg {
-        flex: 0 0 17px;
-        width: 17px;
-        height: 17px;
-        margin-top: 3px;
-      }
-      #skills .skills-list {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px 18px;
-        margin: 0;
-        padding-left: 17px;
-        color: #ede7f5;
-        font-size: .9rem;
-        line-height: 1.5;
-      }
-      #skills .skills-list li::marker { color: var(--accent); }
-      @media (max-width: 660px) {
-        #skills .skills-category { grid-template-columns: minmax(0, 1fr); gap: 13px; padding: 18px 0; }
-      }
-      @media (max-width: 380px) {
-        #skills .skills-list { grid-template-columns: minmax(0, 1fr); }
-      }
+      #skills .skills-tabs:not([hidden]) { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+      #skills [role="tab"] { background: #242030; color: #e4dcef; border: 1px solid #484056; border-radius: 8px; padding: 10px 14px; min-height: 44px; font: inherit; font-size: .85rem; cursor: pointer; }
+      #skills [role="tab"][aria-selected="true"] { background: var(--accent); color: #171220; border-color: var(--accent); }
+      #skills [role="tab"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      #skills .skills-category { background: #211e2d; border: 1px solid #443a53; border-radius: 14px; padding: clamp(16px, 3vw, 30px); margin-bottom: 12px; }
+      #skills .skills-category[hidden] { display: none; }
+      #skills .skills-category h3 { margin: 0 0 16px; color: #f1e8ff; font-size: 1.25rem; }
+      #skills .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 8px; list-style: none; padding: 0; margin: 0; }
+      #skills .skills-list li { padding: 10px 12px; background: #191723; border-radius: 6px; border-left: 2px solid #8971b8; font-size: .9rem; }
     </style>
   </head>
   <body>
@@ -730,7 +697,13 @@
           </div>
 
           <div class="skills-directory">
-            <article class="skills-category">
+            <div class="skills-tabs" role="tablist" aria-label="Skill categories" hidden>
+              <button type="button" role="tab" id="skill-tab-0" aria-controls="skill-panel-0">WordPress</button>
+              <button type="button" role="tab" id="skill-tab-1" aria-controls="skill-panel-1">SEO</button>
+              <button type="button" role="tab" id="skill-tab-2" aria-controls="skill-panel-2">Website Support</button>
+              <button type="button" role="tab" id="skill-tab-3" aria-controls="skill-panel-3">Business Websites</button>
+            </div>
+            <article class="skills-category" id="skill-panel-0">
               <h3><i data-lucide="layout-template"></i> WordPress Website</h3>
               <ul class="skills-list">
                 <li>WordPress</li>
@@ -744,7 +717,7 @@
                 <li>Website Maintenance</li>
               </ul>
             </article>
-            <article class="skills-category">
+            <article class="skills-category" id="skill-panel-1">
               <h3><i data-lucide="search-check"></i> SEO</h3>
               <ul class="skills-list">
                 <li>Technical SEO</li>
@@ -757,7 +730,7 @@
                 <li>Sitemap &amp; Indexing</li>
               </ul>
             </article>
-            <article class="skills-category">
+            <article class="skills-category" id="skill-panel-2">
               <h3><i data-lucide="settings-2"></i> Website Support</h3>
               <ul class="skills-list">
                 <li>Speed Improvement</li>
@@ -771,7 +744,7 @@
                 <li>Backup Basics</li>
               </ul>
             </article>
-            <article class="skills-category">
+            <article class="skills-category" id="skill-panel-3">
               <h3><i data-lucide="briefcase-business"></i> Business Website Services</h3>
               <ul class="skills-list">
                 <li>Business Websites</li>
@@ -1105,6 +1078,38 @@
       }
       window.addEventListener('load', openLinkedSection, { once: true });
       window.addEventListener('hashchange', openLinkedSection);
+    </script>
+    <script>
+      (() => {
+        const tabList = document.querySelector('.skills-tabs');
+        const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+        const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+        function select(index) {
+          tabs.forEach((tab, i) => {
+            const active = i === index;
+            tab.setAttribute('aria-selected', String(active));
+            tab.tabIndex = active ? 0 : -1;
+            panels[i].hidden = !active;
+          });
+        }
+        panels.forEach((panel, i) => {
+          panel.setAttribute('role', 'tabpanel');
+          panel.setAttribute('aria-labelledby', tabs[i].id);
+          panel.tabIndex = 0;
+        });
+        tabs.forEach((tab, i) => {
+          tab.addEventListener('click', () => select(i));
+          tab.addEventListener('keydown', event => {
+            const next = { ArrowLeft: (i + tabs.length - 1) % tabs.length, ArrowRight: (i + 1) % tabs.length, Home: 0, End: tabs.length - 1 }[event.key];
+            if (next === undefined) return;
+            event.preventDefault();
+            select(next);
+            tabs[next].focus();
+          });
+        });
+        select(0);
+        tabList.hidden = false;
+      })();
     </script>
   </body>
 </html>
