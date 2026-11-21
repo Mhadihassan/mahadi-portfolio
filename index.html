@@ -233,15 +233,18 @@
         border-color: #806ba4;
         box-shadow: none;
       }
-      #skills .skills-tabs:not([hidden]) { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
-      #skills [role="tab"] { background: #242030; color: #e4dcef; border: 1px solid #484056; border-radius: 8px; padding: 10px 14px; min-height: 44px; font: inherit; font-size: .85rem; cursor: pointer; }
-      #skills [role="tab"][aria-selected="true"] { background: var(--accent); color: #171220; border-color: var(--accent); }
-      #skills [role="tab"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-      #skills .skills-category { background: #211e2d; border: 1px solid #443a53; border-radius: 14px; padding: clamp(16px, 3vw, 30px); margin-bottom: 12px; }
-      #skills .skills-category[hidden] { display: none; }
-      #skills .skills-category h3 { margin: 0 0 16px; color: #f1e8ff; font-size: 1.25rem; }
-      #skills .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 8px; list-style: none; padding: 0; margin: 0; }
-      #skills .skills-list li { padding: 10px 12px; background: #191723; border-radius: 6px; border-left: 2px solid #8971b8; font-size: .9rem; }
+      #skills { background: #181e21; }
+      #skills .section-head h2 { font-family: Georgia, serif; font-style: italic; }
+      #skills .section-head span { background: #7bb9ba; }
+      #skills .skills-directory { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      #skills .skills-category { background: #151a1d; border: 1px solid #2a3438; border-radius: 13px; padding: 18px; transition: border-color .2s ease, box-shadow .2s ease; }
+      #skills .skills-category:nth-child(-n+2) { grid-column: 1 / -1; }
+      #skills .skills-category:hover { border-color: #699b9f; box-shadow: 0 0 15px #6bb3b31a; }
+      #skills .skills-category h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 1rem; }
+      #skills .skills-category h3 svg { box-sizing: content-box; padding: 7px; width: 17px; height: 17px; border: 1px solid #364d51; border-radius: 8px; background: #202c30; color: #9bd0d0; }
+      #skills .skills-list { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
+      #skills .skills-list li { padding: 4px 9px; background: #20272a; color: #e1e9e9; border-radius: 6px; font-size: .78rem; }
+      @media (max-width: 620px) { #skills .skills-directory { grid-template-columns: minmax(0, 1fr); } }
     </style>
   </head>
   <body>
@@ -692,18 +695,12 @@
 
         <section class="panel-section" id="skills" aria-labelledby="skills-title">
           <div class="section-head">
-            <h2 id="skills-title">Skills</h2>
+            <h2 id="skills-title">Technical Skills</h2>
             <span></span>
           </div>
 
           <div class="skills-directory">
-            <div class="skills-tabs" role="tablist" aria-label="Skill categories" hidden>
-              <button type="button" role="tab" id="skill-tab-0" aria-controls="skill-panel-0">WordPress</button>
-              <button type="button" role="tab" id="skill-tab-1" aria-controls="skill-panel-1">SEO</button>
-              <button type="button" role="tab" id="skill-tab-2" aria-controls="skill-panel-2">Website Support</button>
-              <button type="button" role="tab" id="skill-tab-3" aria-controls="skill-panel-3">Business Websites</button>
-            </div>
-            <article class="skills-category" id="skill-panel-0">
+            <article class="skills-category" >
               <h3><i data-lucide="layout-template"></i> WordPress Website</h3>
               <ul class="skills-list">
                 <li>WordPress</li>
@@ -717,7 +714,7 @@
                 <li>Website Maintenance</li>
               </ul>
             </article>
-            <article class="skills-category" id="skill-panel-1">
+            <article class="skills-category" >
               <h3><i data-lucide="search-check"></i> SEO</h3>
               <ul class="skills-list">
                 <li>Technical SEO</li>
@@ -730,7 +727,7 @@
                 <li>Sitemap &amp; Indexing</li>
               </ul>
             </article>
-            <article class="skills-category" id="skill-panel-2">
+            <article class="skills-category" >
               <h3><i data-lucide="settings-2"></i> Website Support</h3>
               <ul class="skills-list">
                 <li>Speed Improvement</li>
@@ -744,7 +741,7 @@
                 <li>Backup Basics</li>
               </ul>
             </article>
-            <article class="skills-category" id="skill-panel-3">
+            <article class="skills-category" >
               <h3><i data-lucide="briefcase-business"></i> Business Website Services</h3>
               <ul class="skills-list">
                 <li>Business Websites</li>
@@ -1078,38 +1075,6 @@
       }
       window.addEventListener('load', openLinkedSection, { once: true });
       window.addEventListener('hashchange', openLinkedSection);
-    </script>
-    <script>
-      (() => {
-        const tabList = document.querySelector('.skills-tabs');
-        const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
-        const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
-        function select(index) {
-          tabs.forEach((tab, i) => {
-            const active = i === index;
-            tab.setAttribute('aria-selected', String(active));
-            tab.tabIndex = active ? 0 : -1;
-            panels[i].hidden = !active;
-          });
-        }
-        panels.forEach((panel, i) => {
-          panel.setAttribute('role', 'tabpanel');
-          panel.setAttribute('aria-labelledby', tabs[i].id);
-          panel.tabIndex = 0;
-        });
-        tabs.forEach((tab, i) => {
-          tab.addEventListener('click', () => select(i));
-          tab.addEventListener('keydown', event => {
-            const next = { ArrowLeft: (i + tabs.length - 1) % tabs.length, ArrowRight: (i + 1) % tabs.length, Home: 0, End: tabs.length - 1 }[event.key];
-            if (next === undefined) return;
-            event.preventDefault();
-            select(next);
-            tabs[next].focus();
-          });
-        });
-        select(0);
-        tabList.hidden = false;
-      })();
     </script>
   </body>
 </html>
