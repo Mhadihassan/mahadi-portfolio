@@ -133,37 +133,11 @@
         transition: border-color 220ms ease, box-shadow 220ms ease;
       }
       #about .stats-grid article { background: var(--panel-2); }
-      #about .stats-grid article::before { opacity: 0; }
       #about .stats-grid article:hover { transform: none; }
       #about .stats-grid article:hover, #contact .work-tile:hover,
       #contact .work-tile:focus-within {
         border-color: #447585;
-        box-shadow: 0 0 26px rgba(93, 206, 229, .15);
-      }
-      @media (any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference) {
-        .has-card-spotlight {
-          position: relative;
-        }
-        #about .stats-grid article.has-card-spotlight:hover,
-        #contact .work-tile.has-card-spotlight:hover:not(:focus-within) {
-          border-color: #393744;
-          box-shadow: none;
-        }
-        .card-spotlight {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          box-sizing: border-box;
-          padding: 1px;
-          border-radius: inherit;
-          pointer-events: none;
-          opacity: 0;
-          background: radial-gradient(180px circle at var(--spotlight-x) var(--spotlight-y), #c8b5ffdd, #c8b5ff44 56%, transparent 100%);
-          mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-          mask-composite: exclude;
-          transition: opacity 220ms ease;
-        }
-        .card-spotlight.is-visible { opacity: 1; }
+        box-shadow: none;
       }
       /* Project gallery */
       #contact .work-grid {
@@ -248,13 +222,14 @@
         box-shadow: 0 12px 25px #0b081675;
       }
       .top-nav button:focus-visible { outline: 2px solid #d9c5ff; outline-offset: -3px; }
-      #experience .resume-card {
+      #main :is(.resume-card, .service-card, .project-card, .skill-group, .stats-grid article, .work-tile) {
         background: var(--panel-2);
         box-shadow: none;
       }
-      #experience .resume-card::before { content: none; }
-      #experience .resume-card:hover,
-      #experience .resume-card:focus-within {
+      #main :is(.resume-card, .service-card, .project-card, .skill-group, .stats-grid article)::before {
+        content: none;
+      }
+      #main :is(.resume-card, .service-card, .project-card, .skill-group, .stats-grid article, .work-tile):is(:hover, :focus-within) {
         border-color: #806ba4;
         box-shadow: none;
       }
@@ -1075,35 +1050,6 @@
           };
         });
       }
-    </script>
-    <script>
-      document.querySelectorAll('#about .stats-grid article, #contact .work-tile').forEach((card) => {
-        const spotlight = document.createElement('span');
-        spotlight.className = 'card-spotlight';
-        spotlight.setAttribute('aria-hidden', 'true');
-        spotlight.hidden = true;
-        card.append(spotlight);
-
-        const hover = matchMedia('(any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference)');
-        const hideSpotlight = () => spotlight.classList.remove('is-visible');
-        const updateAvailability = () => {
-          hideSpotlight();
-          spotlight.hidden = !hover.matches;
-          card.classList.toggle('has-card-spotlight', hover.matches);
-        };
-        updateAvailability();
-        hover.addEventListener('change', updateAvailability);
-
-        card.addEventListener('pointermove', (event) => {
-          if (!hover.matches || event.pointerType !== 'mouse') return;
-          const bounds = spotlight.getBoundingClientRect();
-          spotlight.style.setProperty('--spotlight-x', (event.clientX - bounds.left) + 'px');
-          spotlight.style.setProperty('--spotlight-y', (event.clientY - bounds.top) + 'px');
-          spotlight.classList.add('is-visible');
-        }, { passive: true });
-        card.addEventListener('pointerleave', hideSpotlight);
-        card.addEventListener('pointercancel', hideSpotlight);
-      });
     </script>
     <script>
       function openLinkedProjects() {
