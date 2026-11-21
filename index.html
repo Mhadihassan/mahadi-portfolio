@@ -245,6 +245,13 @@
       #skills .skills-list li { padding: 4px 9px; background: var(--panel-3); color: var(--text); border-radius: 6px; font-size: .78rem; }
       @media (prefers-reduced-motion: reduce) { #skills .skills-category { transition: none; } }
       @media (max-width: 620px) { #skills .skills-directory { grid-template-columns: minmax(0, 1fr); } }
+      #skills .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 5px 18px; border-bottom: 1px solid var(--line); margin-bottom: 20px; padding-bottom: 12px; }
+      #skills .skills-total { color: #c1b6d0; font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; margin: 0; }
+      #skills .skills-card-head { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+      #skills .skills-card-head h3 { margin: 0; }
+      #skills .skills-count, #skills .skills-list li { border: 1px solid var(--line); border-radius: 999px; }
+      #skills .skills-count { background: var(--panel-3); color: #c1b6d0; font-size: .73rem; padding: 2px 8px; }
+      #skills .skills-category:hover .skills-count { border-color: #9b85bc; }
     </style>
   </head>
   <body>
@@ -696,12 +703,12 @@
         <section class="panel-section" id="skills" aria-labelledby="skills-title">
           <div class="section-head">
             <h2 id="skills-title">Technical Skills</h2>
-            <span></span>
+            <p class="skills-total">4 categories · 35 skills</p>
           </div>
 
           <div class="skills-directory">
             <article class="skills-category" >
-              <h3><i data-lucide="layout-template"></i> WordPress Website</h3>
+              <div class="skills-card-head"><h3><i data-lucide="layout-template"></i> WordPress Website</h3><span class="skills-count" aria-label="9 skills">9</span></div>
               <ul class="skills-list">
                 <li>WordPress</li>
                 <li>Headless WordPress</li>
@@ -715,7 +722,7 @@
               </ul>
             </article>
             <article class="skills-category" >
-              <h3><i data-lucide="search-check"></i> SEO</h3>
+              <div class="skills-card-head"><h3><i data-lucide="search-check"></i> SEO</h3><span class="skills-count" aria-label="8 skills">8</span></div>
               <ul class="skills-list">
                 <li>Technical SEO</li>
                 <li>On-Page SEO</li>
@@ -728,7 +735,7 @@
               </ul>
             </article>
             <article class="skills-category" >
-              <h3><i data-lucide="settings-2"></i> Website Support</h3>
+              <div class="skills-card-head"><h3><i data-lucide="settings-2"></i> Website Support</h3><span class="skills-count" aria-label="9 skills">9</span></div>
               <ul class="skills-list">
                 <li>Speed Improvement</li>
                 <li>ORM</li>
@@ -742,7 +749,7 @@
               </ul>
             </article>
             <article class="skills-category" >
-              <h3><i data-lucide="briefcase-business"></i> Business Website Services</h3>
+              <div class="skills-card-head"><h3><i data-lucide="briefcase-business"></i> Business Website Services</h3><span class="skills-count" aria-label="9 skills">9</span></div>
               <ul class="skills-list">
                 <li>Business Websites</li>
                 <li>Custom Website Development</li>
