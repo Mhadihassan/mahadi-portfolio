@@ -195,51 +195,59 @@
       #contact .work-copy a:hover, #contact .work-copy a:focus-visible { background: #39304b; }
       /* Primary navigation */
       .top-nav {
-        top: 12px;
-        width: fit-content;
-        max-width: calc(100% - 24px);
-        margin: 12px 12px 0 auto;
-        padding: 5px;
-        gap: 4px;
-        border: 1px solid #514666;
-        border-radius: 999px;
-        background: #211c2ef5;
-        box-shadow: 0 10px 26px #0b081657;
+        top: 0;
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 0 16px;
+        justify-content: center;
+        gap: clamp(3px, 1vw, 14px);
+        border: 0;
+        border-bottom: 1px solid #494157;
+        border-radius: 0;
+        background: #1d1928f5;
+        box-shadow: none;
         backdrop-filter: blur(14px);
       }
-      .top-nav .nav-link {
+      #main .top-nav .nav-link {
+        position: relative;
+        min-height: 56px;
         height: auto;
-        min-height: 44px;
-        padding: 0 clamp(8px, 1vw, 16px);
-        gap: 6px;
-        border: 1px solid transparent;
-        border-radius: 999px;
+        padding: 0 clamp(8px, 1.15vw, 17px);
+        gap: 7px;
+        border: 0;
+        border-radius: 0;
         background: transparent;
         box-shadow: none;
         transform: none;
         white-space: nowrap;
-        color: #e7ddf6;
+        color: #d8cde8;
       }
-      .top-nav .nav-link:hover,
-      .top-nav .nav-link[aria-expanded="true"] {
-        background: #3a304b;
+      #main .top-nav .nav-link:hover,
+      #main .top-nav .nav-link[aria-expanded="true"] {
+        background: #322a40;
         color: #fff;
       }
-      .top-nav .nav-link.active {
-        border-color: #806ba4;
-        background: #4a3a62;
-        color: #fff;
+      #main .top-nav .nav-link.active { color: #f1e7ff; }
+      #main .top-nav .nav-link.active::after {
+        content: '';
+        position: absolute;
+        inset: auto 9px -1px;
+        height: 2px;
+        width: auto;
+        transform: none;
+        border-radius: 2px 2px 0 0;
+        background: #cfb7ff;
       }
-      .top-nav .nav-link.active::after { content: none; }
-      .top-nav .nav-link > svg { width: 15px; height: 15px; flex: none; }
-      .top-nav .nav-link > svg.chevron { width: 12px; height: 12px; }
+      #main .top-nav .nav-link > svg { width: 15px; height: 15px; flex: none; }
+      #main .top-nav .nav-link > svg.chevron { width: 12px; height: 12px; }
       .top-nav .nav-dropdown {
         border: 1px solid #514666;
-        border-radius: 14px;
+        border-radius: 0 0 12px 12px;
         background: #272035;
         box-shadow: 0 12px 25px #0b081675;
       }
-      .top-nav button:focus-visible { outline: 2px solid #d9c5ff; outline-offset: 2px; }
+      .top-nav button:focus-visible { outline: 2px solid #d9c5ff; outline-offset: -3px; }
     </style>
   </head>
   <body>
