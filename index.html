@@ -108,8 +108,6 @@
       #contact .client-projects > h3 { margin:0 0 14px; font-size:1rem; }
       #contact .work-grid { display:grid; grid-template-columns:minmax(0,1fr); gap:16px; }
       .work-tile { display:flex; flex-direction:column; overflow:hidden; border:1px solid #494153; border-radius:16px; background:linear-gradient(135deg,#292532,#201e29); }
-      .work-photo { height:100px; background-size:cover; background-position:center; overflow:hidden; }
-      .work-photo img { width:100%; height:100%; object-fit:cover; display:block; }
       .work-copy { display:flex; flex-direction:column; align-items:flex-start; gap:12px; padding:20px; flex:1; }
       .work-copy h4 { margin:0; font-size:1.4rem; line-height:1.2; letter-spacing:-.03em; }
       .work-copy small { border:1px solid #615667; border-radius:20px; padding:3px 9px; font-size:.72rem; }
@@ -127,15 +125,6 @@
         #contact .work-tile {
           display: grid;
           grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-        }
-        #contact .work-photo {
-          position: relative;
-          height: auto;
-          min-height: 160px;
-        }
-        #contact .work-photo img {
-          position: absolute;
-          inset: 0;
         }
       }
       #about .stats-grid article, #contact .work-tile {
@@ -192,50 +181,6 @@
         padding-bottom: 10px;
         border-bottom: 1px solid var(--line);
         color: var(--accent);
-      }
-      #contact .work-preview {
-        margin: 12px 12px 0;
-        border: 1px solid #484156;
-        border-radius: 11px;
-        overflow: hidden;
-        background: #13111b;
-      }
-      #contact .work-preview-bar {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 7px 11px;
-        border-bottom: 1px solid #484156;
-        background: #292436;
-        color: #ede6ff;
-        font-size: .73rem;
-        overflow-wrap: anywhere;
-      }
-      #contact .work-preview-bar::before {
-        content: '';
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: #c8b5ff;
-        box-shadow: 8px 0 #9d8ab6, 16px 0 #766780;
-        margin-right: 16px;
-        flex: none;
-      }
-      #contact .work-photo {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-        aspect-ratio: 16 / 9;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-      #contact .work-photo:has(img:not([hidden])) { background-image: none !important; }
-      #contact .work-photo img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
       }
       #contact .work-copy { padding: 16px 18px 18px; gap: 9px; }
       #contact .work-copy h4 { font-size: clamp(1.03rem, 2.2vw, 1.26rem); }
@@ -840,122 +785,56 @@
             <h3>China-based client</h3>
             <div class="work-grid">
               <article class="work-tile work-feature">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">kbclift.co.kr</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRkQDAABXRUJQVlA4IDgDAAAQFACdASpBAGQAPt1cpk4opKQiLNW9URAbiWcAzFyPftfUtAfRb+5QNGFOX9UWy7ly3bX5g8/paIfSHG3hEnpdYAZ54UJvdzEzkXDbCo1Ev9oQhuCxttWxeg8+nNjtynPCz2DSjSsHg/49WIpWq9yxcM+2JkbVhCHU6BOcmg5wJZ9Bvm0uI7ZiK3JX+GgSTKpnyhgaGKnqAzVv1cPloqKwStGmmeP/4ZEAAP7SaewHXZ5qNyxnBH3lgpQpAv1VAZVN+7lvg4f/0grf0RkFEQB8olifF7K0jVE0x+hxYonL7t/fh493xkfGoGxArCvZ+tjvAdvBJuysjgXY0zRDnBTtdZWM/7h6N/3AJf+nTibcjTIwVuTS272j8TFx96kZMDAbUL3HZGsptoZMCctp0mEmlOCrknwduLK+WwtlytxN/t3P4rkLxHFGSwVKUdbZNUeYPVs1wIGM1v9zrqxZ9uNaoFrQX9Jzsdaa45g7zmfxKJ/Oeh3hspB4DTVnwX2wrXumf1Iy4fCjJNRUETmWUMgVLQ0LGOeFkzQp83NrVwxI0a76N5/9uJwgehjj+6nxSM0Db5w0VMeB//ajDwfuBCUMLbDoV6/W9xu7E61xpEJaSsQTCUGwEo/RPSjzIidXAYSgsjKLLYOWaIFEt3I8PpNTvhcoqbCmvuhnDz7pqgRdSxCPnA6VTsGQpkG6djC3+xdPpD+Wq698Evyp5IevyQWvvDndMUwc0Xw/uK4/VQbZQDIrhBgXmpzOenaLnsDpHwc7czVynsWp9AHEV8lRFdrYHJg0CsmuNW3yKfDFtfyqyqiId8Dlhulve2Mq5mNMW/T/fr7xEbnsU39H9eVexy9mz54uaF1ekD/6QgX7szfP3EHRtzwb8VF4QNFEimch5sSFfgS6IvZBvYWnrOWNvnQYcz0G3UkD4se0tszMgIapYlpDO8fGZZkhwxxYx/+AjNO4jFkYKbKWZxAgZxL6CVbXeEuIGSoRE4UVFJsZtKd27aoOXVaXB6yXi6arpZdJzBTyW46ZPS144y1etRMXfBm+OiAlcyMUf8gfKf8TwR6gvFA3ocHKPrztBY6iTEZHXUzUbEGC3OAAAA==)">
-                  <img src="https://kbclift.co.kr/wp-content/uploads/2026/10/1848554142954402-luxurious-champagne-gold-passenger-elevator-he-np25.webp" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>KBC Lift</h4><small>South Korea · 3D website</small><details><summary>Project details</summary><p>A Korean elevator website that uses 3D visuals to present its lift range.</p></details>
                   <a href="https://kbclift.co.kr/" target="_blank" rel="noopener" aria-label="Visit KBC Lift website">kbclift.co.kr <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">hayashimulift-jp.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRlAEAABXRUJQVlA4IEQEAABQFQCdASqgADIAPt1orFCopiSjonVc+RAbiWUNxiWdMuvvv8iSSeAWWt+t83uNbxBMV1I+zzNdc5fBSvty0bc8IGEcQPhScH4tFFxeXfPlpck/oWa4ONC25PKuZT0bxJH4LX6RDEPDjbp6qt9CY2H13Oh1hKuBGxOnvWZKiK4yRdHPrS7T8aLFCBSbDue6PLd7cApIO6wLPhnTsLVdsHgnOJrQY824mM28jbXjIvRwT8poAAD+9g1iniMEm0y1B0l02wXWWhjW1a+55rVw2o4Dq7bPVnx+NK+trJTorL/k3cclSRV0mq+HuEv7o6W4qCz+sq7gf5eid9+itGAGEfJEKX6uEj6gUoAGCQ9ZYy0YmfVtEeTHf/2WehVakdXXkyYovUesLm7twC+s3+/soKeni+QnaYD1/bGteeF1jAy3z7SYb+MnpPBSf1y5T1JAGgByL3bxWzbP754TDrHOfK8RksZNaGtverHvQ5rMyjfFGSioZ3NDgztHUYoWcdfHLHqyWRU9tOLI8nlv+L+EakjrtClv9I24Fkk4qlBehOPyVI2CLUIx2P6BDN3phSJVV8NLZtMxOqpqZGPzpUn9314ETOP6gXRaSd/aBn5FEYDTmyxabWGZ5kemZW1w240EeeMxp8SE/M35dy1DubTAMEYt4OQRyz3CWnCL1x8d1h+S8q9ZypRyhDX4WCwOy4xEQTaZeXc8XoeNGNTRMdurDyA1kznircmnNXGuAjQWwpL66/q/+OCCKrKatBb1zG4o+1+CKFEVh1mQ9JGcqFr8sLHd4r7pOQrkJIUGls2kEvbIUbsrikl54OM9tJuDE02/nhYAf33aW+Zi4AZTaBBKV/kVequB+Y+5uJHzUGuiUabjGLFDbVaeJmfYrF6sb15ZBq+71kLiqo6ufF5caPKQ+DmGbGHz4wuh0toBF79nNwGcyjS048JF70Chv4aBvbL07tKGGtm/VfTtgYS4QtRLdYTVoz80YlMfCnx/8bHTljXId7cJYWD1rSEwyWhPGPqM2Ozev3G9h444SXazY5338CxNbnn2ijapcrfCYnvY/CbvrYFZapWe0R4nOi4vKMaV+2bDGz3ABQtQw5eGUA3Ppwii/JGJJSo4LJfJPPrC4a/S8M8JSjwkOaPUcn8pybUCk97v6J2oh5AwUc5VQltHVeoBQbj4aXPaguE3e61dodtHLixIyZi3S0lG7o88KoahJCtIVT6vo/wQ5BQRUtmFsEe3Ae/s1mgTiGzI/eB2dQhLN1H4dGEifAswlY//6BASvyGR2jX3ffJ+iyRGyxnu/IZ6mUkjZxv5yRMt/jF4qrKeJFzTAWfcu9pHZln+lpGmsSFfqPZvwxeqz9o7ndRdEyC1bPZzZo+Hpf3l/qzRmqQmsT9peJeeTZxaVfbBql4tCmOsRngGQ9dhMOmOakAU180bjF5P+K/r7JDKzAYNJmgBMIXYAAA=)">
-                  <img src="https://hayashimulift-jp.com/uploads/1835079978063924.webp" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Hayashimu Lift Japan</h4><small>Elevator website</small><details><summary>Project details</summary><p>An elevator website in the Hayashimu portfolio.</p></details>
                   <a href="https://hayashimulift-jp.com/" target="_blank" rel="noopener" aria-label="Visit Hayashimu Lift Japan website">hayashimulift-jp.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">hayashimu.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://hayashimu.com/wp-content/uploads/2026/11/hayashimu-banner1.png" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Hayashimu</h4><small>Company website</small><details><summary>Project details</summary><p>The Hayashimu company website, part of my work for a China-based client.</p></details>
                   <a href="https://hayashimu.com/" target="_blank" rel="noopener" aria-label="Visit Hayashimu website">hayashimu.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">hsliftparts.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://hsliftparts.com/wp-content/uploads/2026/10/hs-lift-spare-parts-actual-400.webp" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>HS Lift Parts</h4><small>WordPress · Product catalog</small><details><summary>Project details</summary><p>An elevator components catalog. I worked on the page structure and how the business presents its spare parts.</p></details>
                   <a href="https://hsliftparts.com/" target="_blank" rel="noopener" aria-label="Visit HS Lift Parts website">hsliftparts.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">liftpartscn.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRvYCAABXRUJQVlA4IOoCAACwDwCdASo4AGQAPt1kqlEopSOipdZsgRAbiWUA1dkJSAbYCaUZ+Axllm6cJpcvtf4aO7kK4PX6qtv71fWhnc3u8GEsZZvg7peIqcinOBqrgMcLrGVrNtYuuAuWAOM6yoNJ4lNsNPyHjvP7x/zortWxLQ3BeitIbZjjV9yEXgGHN8vNTjotkAD+75WqO0Traksm9VkF6YEC+PZAkbZNmgVR/okhkTRzw1bEvlcjoerJS+6YsHf/xJKSTD7B/biKLVDcSwPZ7rt3tMVfD8w+Z0zCEn5EMj7S+d6jOgZt3jBEmY+3IcGUr4PACw+Gm9pNr06/v7ezPXZb75HFlBp5R7cnEGY4pexmFFUeCHtCi8q9G2/thk7tJY1wUf1t6UrG5ECiTluoDe/2VcQBDOsltrFK2myfWZx3a47VMNiaPVbMsoX4CelYs7lboF7beqnKe8Vq5atmXORFQYatqiRjgRbhT+utIRj/S7wfwLnv7raD66cvga/wAXHg0x7Bj96Cb4CpjGBYDQX3GrYlr4lMkNittUVizB6OIUQsK0bstDFtZ7JImqNMwysKlz4i/jFTWeJEk8y83xKXsoOrw8K7wTgHNm2Aq6nsB9F7MW0mCCqdPOCpCUKuIHhAZRlgJP8dy/8qNPAOqMcg0p6H8hlBQ53dpC60wphmJzP5RvF2mMDRWE1ThASb8pme347ItFjlT6k8DkKyewNudt2KUR1r23SvQfkql54AD1uI72ii2cpSUFCMC3WHV2iLD/iWctfR0iS/4E/8yS3+o64WNlMzHJZCCbWnaeye/MwouZfMpbhgr3MZHbV3i/uK/5/DvExMqgz+sgjYKoC0tbzgSe4yzGtm7DGPftusM5egZVr3ERRQUXVM1CBnY32OilcJ/V64Hlzdbo1naoXfz8nooobe9qxXqZT2WSi+RxiOrBtn6gcl2IqvW8zgR8pblaEvbAgvE0MTn55daFg70saVSEWjAueoa2cA2EYce6AAAA==)">
-                  <img src="https://liftpartscn.com/wp-content/uploads/2026/05/Elevator-Escalator-Parts-445x800.webp" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>LiftPartsCN</h4><small>Technical SEO · WordPress</small><details><summary>Project details</summary><p>I refined category pages, metadata and internal links for this elevator and escalator parts catalog.</p></details>
                   <a href="https://liftpartscn.com/" target="_blank" rel="noopener" aria-label="Visit LiftPartsCN website">liftpartscn.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">upalsh.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAAAwCwCdASqgADcAPt1usFGopqSipbko+RAbiWcACwjnR7XBDymmFr23zoFeko8BGljuoXBir4hRtK29NGOx+hEZ2UDjTCcyGWkSU38+asOiVT7yWioSRrZ4MhGlFooC7HobAAD+8I4AobSv52pGMwARP+1L2YO5uW8J2XI41CsVJzX3Y5CCzyAAtGOpX/Fs+hT+VzQsekhyou3I09XdDjpnPmTAJ7beR7Pw2Kysra8YXeK48N+rqhGTrkfHri1eOz5YnpD9hPTJBE69EojNVDlipg2cTW90szwrWfwX7YsfHhT8lILf1rhvD0va1kHAE/H+pUCgbfjoo+e8nQItP5j/s6zH47GgFVBN02poKK1ITYXv69Aw6ch/zxANQrAbh3REPxkxmKBBdMr+T6utyQNl5eZ7Xv5obCp3kXaS39RaRhnixULGonPMhGitnAgyYVfkXL5PglPk+aC76HarqzN6fa0Eors2IuWn2eTJUJxm3YtbD2EDuhAAAAA=)">
-                  <img src="https://upalsh.com/wp-content/uploads/2025/09/Untitled-design-8-768x262.jpg" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Upalsh</h4><small>Industrial products</small><details><summary>Project details</summary><p>A business site for industrial parts. My work included WordPress setup and product page structure.</p></details>
                   <a href="https://upalsh.com/" target="_blank" rel="noopener" aria-label="Visit Upalsh website">upalsh.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">tricyclepartscn.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://tricyclepartscn.com/wp-content/uploads/2026/08/Electric-Tricycle-Spare-partsbanner.png" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Tricycle Parts CN</h4><small>WordPress · Product catalog</small><details><summary>Project details</summary><p>A catalog for electric tricycles and spare parts. I worked on product presentation and site structure.</p></details>
                   <a href="https://tricyclepartscn.com/" target="_blank" rel="noopener" aria-label="Visit Tricycle Parts CN website">tricyclepartscn.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">chinabdtrading.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRkYDAABXRUJQVlA4IDoDAABQFACdASp5AGQAPt1urVGopqQipTjqCRAbiWMA0lXv+s+eK00CnnuqWkDfjs3lnxBmRSqxbrf3oeLzfnDlyNtgGXeInUCjn6jZQqJ7odx7PYIkZMZ+hyCdKpGoUK6g5YMvZhu6mMQhR2mgxJpJ5H21EMIaQ3twzHPJuTFrdKc1Dmak/7i8FNuvVEzjaqQdWf+e7qKNvqr/djYLIsD7rSH4xqhIY/KkGB23lgAA/vDxqzrx0zf+Ol4PhVREPGKwW1QATTKL7ba4tzhgtRrkTIeR5fpyxhoedSHpalg1H9UG+pMhvQWKG42y21D2Ag+nXfVpsLFX6K7wPgDXAW0GSmxiTsmPlXeEO7MkZb5xxtDNcv5oyV7qwCEvUfzfLdBcg2cprDUD7Jf+pkmQ1174CZUUyIohYCklMyCNmQpkSU+xHddQz3LAW+CAWtBDtjeTGjprUQn8vvxuYy5PngUPxfE1+kOQK1HtjYyHt1GRBPAkPOmA+5MSc0gN1xvRBirBJyqmXCFbxAlECvvITxbb8H0kLTRIwMf7ep1P0Gus7ziGkP7fDZSAFg70OCkGT3rfLf2Rr64hbLXjwTfoPx48UkdVzgbRbK08JmlgbNHEa6SZ5c3UBnIlbyMALWSLrbToG0mQi/oZu0OuriZqsodG/iPUZewvAn8npVdv8+A8MrDR3/j6dYQbTFX+haD4NEeNphm4k9pyfyYSd0pn4bmU6gd0my9vMZ78i93V/68VgMsk8jKklqS2YEQ3daEazBhzQv9Eb8iIKLto+DQfc78EBBVafo9yY1TLmyjJAVwSo09QZgJeGJZVUACmePg1tVsfmkBKwXaXJkGOU4gRKMpsenRVzhGS0e+5d4iYI8t+yZcR44lPfQxf0vB++25Vj7QF61jsEY792egGl4cLFMQ3BwHguC70JBRmgJshlRac5pOi36mufOmcdeQdkG+ZbF0vNZfNTp744WF2ZvNfF30rVktZMDivjyaEM3/rKIoNNrDVwzCUkPkbqceOFqv016+IMkr0xF+HKaLdINhzJaZlIXzvp2GHCAT+oQ0i5jFzMP1KmJyo2MQ8cRWqOk19mCUd8ADKKCksFWbpLsAA)">
-                  <img src="https://chinabdtrading.com/wp-content/uploads/2025/01/mplc-slider-slide-1-opt.jpg" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>China BD Trading</h4><small>Trading · WordPress</small><details><summary>Project details</summary><p>I worked on the homepage and business presentation for this trading website.</p></details>
                   <a href="https://chinabdtrading.com/" target="_blank" rel="noopener" aria-label="Visit China BD Trading website">chinabdtrading.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">liftpricebd.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRpgCAABXRUJQVlA4IIwCAADQEACdASpNAGQAPt1eqVCopKQjqFOdiRAbiWkACxYH97jr0sP0gFlQhTc1+o3BrWiVmOiEA85Arzi3yA9Xipw8JcteoGKZ+EYtWgjLgT11/nwzJdTMLPPp+hbPXsTxikzfAQdKuroY9ZiUgx7bYmrAyTchgKXXtxmGGLhQoW2N2uzVluDKCKS1DA7R/fkiMAD++hAoDeA5/XrXv5OJnFC07H3QHpJOIG2q+VIrF7oGYh99fy+RUzd14V006Zdx8bPb2PoO4j7I3PBTf1XrUT8FFse5wCKBqkqMEb/6m011DRSlKaxenwmNZSzh4M/ftMmjUzorKzYyf7ksKSu8awicQGqT8tmZliG5xqI/m7eOiYJafyFA2yGo3mmch3MJo1IJWRgwPr4fwPHXOVXeOiekbvSIjSKHSQn+UBWjL9KboUtHMihxlDdbBPQSMXLDS/yV/Q4ROAJfkzWa5iB28vH+L7BU9SwY6/rZ9bpOVJtsrMHNNiwq8BzTb4dGQPpNrMRoY6yAzXvbsHr4++BxasAfLV4sTu8WxPrDglMuOXFRPCtv3wRPwtx7vVFQjd+iniA7nz4Hez/VJ7eUXMozk5cfxnR3cLFIN7VanlslTjia/CWyHY6mxGn20YvlrmiKaobQRrCVLMjDYalLXy8PjNPKc8y57MKA86Pi47sZo3aRFPaXCs1zsydJolrxYPVm4K1MjRE1PQIhFaAAUUIlCgcX3LkJWAQ/TwF8as2+z6LSP/rObYWIlxGfs0Qoi/ibNPxa8DUNEEDER/RvwJZIelusDUS12rPSLTGjPvC4R/SepNGHkWC2AkqGzYGeY1lPBheW9G0hAzWmaOHKv0vIkh3qvrtIG23iwyxYAAAA)">
-                  <img src="https://liftpricebd.com/wp-content/uploads/2026/06/FUJI-JAPAN-C11-Passenger-Elevator-618x800.webp" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Lift Price BD</h4><small>Elevator website</small><details><summary>Project details</summary><p>A lift business serving Bangladesh. I helped set up the WordPress site and organize its pages.</p></details>
                   <a href="https://liftpricebd.com/" target="_blank" rel="noopener" aria-label="Visit Lift Price BD website">liftpricebd.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">ishratenterprise.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRgIDAABXRUJQVlA4IPYCAADQEgCdASpkAGQAPt1orFIopaQipJtpuRAbiWUAU+fwINNt3+fAfTbH2Mlt3u4k1/8wY1d/iP/tbyHJXJ49F/UoR2nin7bL5CACQQNMjpAin52Q83tXFyp5x+/fRoGZ1JtGZKaHatJJd6x/4H16XLn0PpDV0DvHSvMfYqkM4lJyDkhKgmU7x0+B0yJZvXgL/WRB2Br/74/ktpR5/mhk7AAA/vMIRUCXSl2/gA2GI2O1NIsToc11qyNPVY4aWafDwhEBHQ3n9OME9skkFEpF5JEjRfE2Tlr5LbS92kSXXdC30tVF0gOCrTY4yk86rR27GC794Y4q3bBaKwm2KYtR99UzNkzSH7jTOZqEAcUUDCLyTO8m6K4aKGoLZccO+mb23759PUuhTf/cStn31rrHm47mtk2U9hFObQm5yXwkK8UyZK4DPb4xNbIPY8STCRyBmJ+oKeqKhY5cmciClui9V7S4TG0Z3zwNbZYhSxpe+fc0LGr/Q+TlEB5v7drR893UnOKqdKZxhvbrmEsAKo1F+O1wrw1cKaYhvTNNqPiVgHcBPhOgKO62a6BfwyVu6J9FwFuKj4BijLTh68mFpo7PfCjmGMFKa/G7eaOwrVCrDitb4dbpH3pSzrx4SZgRBhSMYF24voRaaT9txDr72MadVE1QkpdJlBF7SYuABzuxsdvYcEw3uA5V9qwlMTKus5vmCgyayUCnibOA/yqS3CB0GKGF/z/F2LZqaVHvbidPuiG/H6NlaFbmbif7sJRmUXrit3ft/lt6ImnuBarY5afaXEVJzusY/c5kXxGtLOZe5X5Wk2bJ/AEYbtIJ7lZCL71WVOaqkbKUYwnzlGqQU6m8/pizK2/cOWj2jVG+YHpVRPSCjg1QE1Nys3fsyU3SjiFo8QMd54eMM7UqWHNkGIOahOEGkjJoH//n1hMJINu7xIWAuZFcNON/I0zwqN9FT7iRs0Krq7Vm33MMNhaXCvTndpJUDFdTggJx4a1lx3S10AlrvnZIAAAAAA==)">
-                  <img src="https://ishratenterprise.com/wp-content/uploads/2026/06/ishratenterprise-watermark-0444-600x600.webp" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Ishrat Enterprise</h4><small>Electronics store</small><details><summary>Project details</summary><p>I supported the WordPress site and product pages for this electrical and electronics store.</p></details>
                   <a href="https://ishratenterprise.com/" target="_blank" rel="noopener" aria-label="Visit Ishrat Enterprise website">ishratenterprise.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">liftcomponentsbd.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://liftcomponentsbd.com/wp-content/uploads/2026/10/hs-banner1-scaled.jpg" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Lift Components BD</h4><small>Elevator components</small><details><summary>Project details</summary><p>A lift components website for the Bangladesh market.</p></details>
                   <a href="https://liftcomponentsbd.com/" target="_blank" rel="noopener" aria-label="Visit Lift Components BD website">liftcomponentsbd.com <span aria-hidden="true">↗</span></a>
                 </div>
@@ -966,12 +845,6 @@
             <h3>Australian client</h3>
             <div class="work-grid">
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">stratateam.com.au</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://stratateam.com.au/wp-content/uploads/2025/05/new-deve-570x447.jpg" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Professional Strata Team</h4><small>WordPress · Local SEO</small><details><summary>Project details</summary><p>A Sydney strata management site. I built the WordPress pages, refined the service structure and worked on technical SEO and local citations.</p></details>
                   <a href="https://stratateam.com.au/" target="_blank" rel="noopener" aria-label="Visit Professional Strata Team website">stratateam.com.au <span aria-hidden="true">↗</span></a>
                 </div>
@@ -982,34 +855,16 @@
             <h3>Bangladeshi projects</h3>
             <div class="work-grid">
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">curtainpalacebd.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://curtainpalacebd.com/wp-content/uploads/2026/08/banner.png" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Curtain Palace BD</h4><small>Home furnishings</small><details><summary>Project details</summary><p>A Bangladeshi home furnishings site featuring curtains and bedding.</p></details>
                   <a href="https://curtainpalacebd.com/" target="_blank" rel="noopener" aria-label="Visit Curtain Palace BD website">curtainpalacebd.com <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">musicpoint.com.bd</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRvICAABXRUJQVlA4IOYCAABQEACdASpQAGQAPt1kq06opaQiKFVcSRAbiWUAy6gJ/YfmTKsW8+KUuFRP/fkMCP3+Q+HbvaEsJmUbbPFR/zzO7MI2ryyaZqRX6Ta7ZfLeq+2+hd+49pB24xZlnIHiVbGi65XoaT8coQWG6q38grWANUO87k0yxrv7MnbFvi1AFrlLm3OWfv1sAUIAAP7195Y75h6btG1xg3l3W5AE3suheaLlYtX/SebMtLVkHjYXYDlTn8cx9F6laSOrDYv7TP9Evd857vR//jtLbNgQJShA4ScEtTsDYDK127Q6RAuMo4+fRYiqCnGcy/eeIEKoaxGVKS1jIO5C2kgirLWhV3CKKd0OErOeoWG5r7G01AF7sV+g6xQm1UylAcSfkTaGPVZashhDYs4aJP903+MeBi3C2kuqpyTMBAaZf1P2JA3E+nAwYc+gDDHy83eYl/sDCbgWFaKt8R2RwculhBsdVakNn94KFp/9umEWHNpMspHPHqz0FioKZVyGRkp0hUw5hvj1NaB22zlbtUAM8TfBfSbj5nv6Pe9hfR4eLNlRwOCDB7IQ8QtWhcYdi6j7K5QP0Jbi22aZa2H6anbQNH0i2IvYuIsl6FKMljmlyc7SAKmkGaKtXkSS2zoWGE4NfeKObxIX2DCjvLj74/Z4wYa98CVZskyQEKo5NQT0uEVNA0hlPYMUj4oPVRyxL+jKQ0+6gmtkswpLMerILNm+d9MJcAlKy2dNB+SxiAF9DlV8P0I2GZ9xLbcKhTbWCxK5JMXa3t4dWdTNxjOhukFPJ2kUXQRUizFGbHEW+N271omguRCNdvRiteaLuWfORKDpbJ24nTZ9mPzRfY/wxZSlrRDP0kIUAcx3q+WZxTJW6+JEpre6Eey+TC41iHTDvVuMGE2qhbGR4fsm4uL1UYYp1I2g5+NiZV078F0RxDq3rnX2vFOIqa3vczG7K67tTPbnsre+XW3/pV1S1zC+xXvMendrpz0Lzf7zAAAA)">
-                  <img src="https://musicpoint.com.bd/wp-content/uploads/2025/07/yamaha-acoustic-guitars-yamaha-fs100c-acoustic-01-300x375.jpg" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Music Point</h4><small>WordPress · Music retail</small><details><summary>Project details</summary><p>I built this instrument store in 2022 to showcase guitars and accessories.</p></details>
                   <a href="https://musicpoint.com.bd/" target="_blank" rel="noopener" aria-label="Visit Music Point website">musicpoint.com.bd <span aria-hidden="true">↗</span></a>
                 </div>
               </article>
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">trendyfur.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,UklGRiwFAABXRUJQVlA4ICAFAADwHQCdASqLAGQAPt1oqk+opiOiKbUa6RAbiUAaXBmanm/GKsem3j6Rttlz02ndtiQEdt9dxMsWHByelhHgXAgbU2xdrX6EKv436otOcKTRrGOgUqzWZop3lgpYphr4Lf3Q7O8NpnGgtmjfLGb8ffFpy9Scn1JRTf1+zjlomNcaTpcMUhDUzsdyvitSCNH+R5JUvqUJ30Upq92yfR+QM2MkvWMImQW1jgU9YF5dr5AF79YjCmfP0z6Ef4kPoF2Mivc4fEjOI0Rn9az8RdiYvRyFohCOp6nE2Cp3YcHXlABzbxSQkoT0+z4UIdOVE3ei95EhnDrtBEOBaAD+9QgE2VSovDaFGXkF1wMlYalsBddAmgMNh88Ks+oHyUVAtxHFjcsmoOZkvAT2ViLWCRKO+cmR5P6lwiCqjKGQcfw2JzMSxR5HIsA86SE+dhFuXLM0OIFFIRudE1AKUKXRJCTRiTFBzLlFznNyW3c1VeLTqFVKHZ0n/jT2sHwbCXDYkLU0dGyePaaMJUefXtiA8oVjL3khA7QTNBn/jMiHkDi1KCez9VHxEAFhYfni9IqbaEYp7O/Skm6AJoM5HYv8gyRpca2ATOxyh/RtWbLV86+PTwQB45H1dmLFeT4idHz9y7EiUZsQuBxol5QkcMefidw4dhMAW9V/gpT1+gVKbci7BplqZ85T7au7sg1NgLZ8Jd8usFcvrMv0c3lW53WSVg3fBLo6Yjj5VGDHcyNxHI2ARvqkcSBnEYkm8XHpS5fqFJ3q4tselkJ7gJjdhEicEWWYCWgTq5rwZhzQcin8HeIuZvLUUXlUrxzjbH2RPKnJCtng/xRHzYqYYY2StV5qYVEBF02N/u4m8xacGVaUwmYwI2maJeapCXJMzpXaH2gp+S9E1UX2eBHBkjgmVuwA511cHkUOqUmrIjxuv+ZKVhZvfPgtP7PgAtLkT/CC6xdylLsWHLkCfEsY5wKcHGHxWf3D25+eh545W5uJZmdQAvW1iWFdPqFYsfgl9Rg6/bnpcXBsWRZhvxqS+yIjaMtILE2fXco3WeKeEyuj5CLbjUvqaWVQz8VMOM6h5rE94GnljhJnX18zqz0lbsARHHwCNawLH8t8ojMpULz/3WRoJl8HaSCysfvIWZ/ojXP7fSo76E6Th2hLsKKPCn6/IrpTBiGB6phyHNzPfFnLKx38Ir39NGaJfwN81dupm6TJW8mYE9nwknsGUuw547NTKQrOydgzR+qvUUeKsKs1jbnv4oQujkg8ZMkF8PJbY9QiuIKeOX/lkloogMioi/qGnLeTNOfVkFoi2u/8C/orIYb4ZDMq8nvow4SoOg83kuZL1cFrG15RbV+S97GglLfW4DJbyOW3zb0TKbtqu713FhgGb3uI6nX5SyLbPbk3kzCSwABsLHK7curd0831NAtfs1153aihIkWzK47KWqkBlyjwKL4ogQHRslUmuQFA4X8H95cyfCjhNvNn/zXemGeo3n41/ThdfAWy3o4SKh9N9yQAPKnm2YFUMu4pqU6Z0JA8fk9aU+0PC0Qp/7v5sCK6wbLNofruAn+dqccKVgDAss5GcxFc6Rq8YCVqFm0ZDFvN6ql1oABCyySuUQ2uA+NxzxYmCjlF8ACeoSm5LY5J7OhgFUK134xnldNZMwlOy8CXpkWv+WxSy3qEccH7BEQM3jFMSKWZKqt+BtirkkWEqR1ms7lxH3xcc97UFkK6Jx/cz+wBLA2sEV1Q2pqYLPjG4AAAA+EAAAAA)">
-                  <img src="https://trendyfur.com/wp-content/uploads/2026/10/trendyfur-banner-image.png" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Trendyfur</h4><small>Ecommerce · WordPress</small><details><summary>Project details</summary><p>I worked on the store structure and product presentation for this handicraft business.</p></details>
                   <a href="https://trendyfur.com/" target="_blank" rel="noopener" aria-label="Visit Trendyfur website">trendyfur.com <span aria-hidden="true">↗</span></a>
                 </div>
@@ -1020,12 +875,6 @@
             <h3>My agency</h3>
             <div class="work-grid">
               <article class="work-tile">
-                <div class="work-preview" aria-hidden="true">
-                  <div class="work-preview-bar">webliftdigital.it.com</div>
-                  <div class="work-photo" style="background-image:url(data:image/webp;base64,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)">
-                  <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&amp;fit=crop&amp;w=900&amp;q=72" loading="lazy" decoding="async" alt="" onerror="this.hidden=true;this.style.display='none'">
-                </div>
-                </div>
                 <div class="work-copy"><h4>Weblift Digital</h4><small>My agency</small><details><summary>Project details</summary><p>My agency website for WordPress development and SEO services.</p></details>
                   <a href="https://webliftdigital.it.com/" target="_blank" rel="noopener" aria-label="Visit Weblift Digital website">webliftdigital.it.com <span aria-hidden="true">↗</span></a>
                 </div>
