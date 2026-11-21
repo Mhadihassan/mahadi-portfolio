@@ -233,17 +233,17 @@
         border-color: #806ba4;
         box-shadow: none;
       }
-      #skills { background: #181e21; }
-      #skills .section-head h2 { font-family: Georgia, serif; font-style: italic; }
-      #skills .section-head span { background: #7bb9ba; }
       #skills .skills-directory { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-      #skills .skills-category { background: #151a1d; border: 1px solid #2a3438; border-radius: 13px; padding: 18px; transition: border-color .2s ease, box-shadow .2s ease; }
+      #skills .skills-category { background: var(--panel-2); border: 1px solid var(--line); border-radius: 13px; padding: 18px; transition: border-color .2s ease, box-shadow .2s ease; }
       #skills .skills-category:nth-child(-n+2) { grid-column: 1 / -1; }
-      #skills .skills-category:hover { border-color: #699b9f; box-shadow: 0 0 15px #6bb3b31a; }
+      @media (hover: hover) {
+        #skills .skills-category:hover { border-color: #9b85bc; box-shadow: 0 0 0 1px #a78ac82b, 0 0 15px #a78ac81a; }
+      }
       #skills .skills-category h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 1rem; }
-      #skills .skills-category h3 svg { box-sizing: content-box; padding: 7px; width: 17px; height: 17px; border: 1px solid #364d51; border-radius: 8px; background: #202c30; color: #9bd0d0; }
+      #skills .skills-category h3 svg { box-sizing: content-box; padding: 7px; width: 17px; height: 17px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-3); color: var(--accent); }
       #skills .skills-list { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; }
-      #skills .skills-list li { padding: 4px 9px; background: #20272a; color: #e1e9e9; border-radius: 6px; font-size: .78rem; }
+      #skills .skills-list li { padding: 4px 9px; background: var(--panel-3); color: var(--text); border-radius: 6px; font-size: .78rem; }
+      @media (prefers-reduced-motion: reduce) { #skills .skills-category { transition: none; } }
       @media (max-width: 620px) { #skills .skills-directory { grid-template-columns: minmax(0, 1fr); } }
     </style>
   </head>
