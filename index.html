@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <base href="/mahadi-portfolio/">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
@@ -1109,7 +1110,40 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>
-      if (location.hash === '#contact') history.replaceState(history.state, '', '#projects');
+      (() => {
+        const basePath = new URL(document.baseURI).pathname;
+        const routes = new Map([
+          ['about', ''], ['experience', 'experience'], ['education', 'education'],
+          ['skills', 'skills'], ['certifications', 'certifications'],
+          ['projects', 'projects'], ['publications', 'cv']
+        ]);
+        const pagePath = id => basePath + (routes.get(id) ? routes.get(id) + '/' : '');
+        const aliases = new Map([['contact', 'projects'], ['cv', 'publications']]);
+        const url = new URL(location.href);
+        const slug = url.pathname.slice(basePath.length).replace(/\/$/, '');
+        const pathSection = Array.from(routes).find(([, route]) => route === slug)?.[0];
+        const fragment = url.hash.slice(1);
+        const legacySection = aliases.get(fragment) || fragment;
+        const section = routes.has(legacySection) ? legacySection : (pathSection || 'about');
+
+        document.querySelectorAll('.panel-section').forEach(panel => panel.classList.toggle('active', panel.id === section));
+        document.querySelectorAll('[data-section]').forEach(item => item.classList.toggle('active', item.dataset.section === section));
+        if (['experience', 'education', 'skills'].includes(section)) {
+          document.querySelector('.resume-toggle').classList.add('active');
+        }
+        if (routes.has(legacySection)) {
+          history.replaceState(history.state, '', pagePath(section) + url.search);
+        }
+        document.querySelector('.skip-link').href = location.pathname + location.search + '#main';
+        document.addEventListener('click', event => {
+          const item = event.target.closest('[data-section]:not(.resume-toggle)');
+          if (!item || !routes.has(item.dataset.section)) return;
+          event.preventDefault();
+          event.stopPropagation();
+          const destination = pagePath(item.dataset.section);
+          if (location.pathname !== destination) location.assign(destination);
+        }, true);
+      })();
     </script>
     <script src="script.js?v=8"></script>
       <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
@@ -1149,23 +1183,6 @@
           };
         });
       }
-    </script>
-    <script>
-      function openLinkedSection() {
-        if (location.hash === '#skills') {
-          if (!document.querySelector('#skills').getClientRects().length) {
-            document.querySelector('.nav-dropdown [data-section="skills"]').click();
-          }
-          return;
-        }
-        if (location.hash === '#contact') history.replaceState(history.state, '', '#projects');
-        const section = location.hash.slice(1);
-        if (section !== 'projects' && section !== 'certifications') return;
-        const link = document.querySelector('.nav-link[data-section="' + section + '"]');
-        if (link && !link.classList.contains('active')) link.click();
-      }
-      window.addEventListener('load', openLinkedSection, { once: true });
-      window.addEventListener('hashchange', openLinkedSection);
     </script>
   </body>
 </html>
