@@ -324,6 +324,33 @@
         #projects .work-copy { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'title' 'type' 'details' 'link'; }
         #projects .work-copy a { justify-self: start; }
       }
+      #publications .cv-print { display: block; margin: 0 0 16px auto; padding: 8px 14px; color: var(--accent); background: var(--panel-3); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+      .portfolio-cv { background: #fff; color: #29313b; padding: clamp(18px, 4vw, 42px); font-size: .83rem; line-height: 1.5; }
+      .portfolio-cv :is(h3,h4,h5,p,ul) { margin: 0 0 9px; }
+      .portfolio-cv a { color: inherit; text-decoration: underline; overflow-wrap: anywhere; }
+      .cv-paper-header,.cv-paper-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); gap: clamp(14px, 3vw, 32px); }
+      .cv-paper-header { align-items: center; margin-bottom: 24px; }
+      .cv-paper-header img { width: min(100%, 195px); height: auto; aspect-ratio: 4 / 5; object-fit: cover; justify-self: center; }
+      .cv-paper-header h3 { font-size: clamp(1.55rem, 4vw, 3rem); letter-spacing: .055em; line-height: 1.07; }
+      .cv-paper-role { font-size: .95rem; }
+      .cv-paper-header address { display: flex; flex-wrap: wrap; gap: 4px 15px; font-style: normal; }
+      .cv-paper-body aside { border-right: 1px solid #8ea6b6; padding-right: 14px; }
+      .cv-paper-body h4 { font-size: 1rem; margin-top: 14px; text-transform: uppercase; }
+      .cv-paper-body ul { padding-left: 18px; }
+      .cv-paper-job { break-inside: avoid; }
+      .cv-paper-job h5 { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 8px; font-size: .86rem; margin: 9px 0 1px; }
+      .cv-paper-job h5 span { color: #495e70; }
+      @media screen and (max-width: 520px) {
+        .cv-paper-body { grid-template-columns: minmax(0, 1fr); }
+        .cv-paper-body aside { border-right: 0; border-bottom: 1px solid #8ea6b6; }
+      }
+      @media print {
+        @page { margin: 10mm; }
+        body:has(#publications.active) { background: white; }
+        body:has(#publications.active) :not(.portfolio-cv, .portfolio-cv *, :has(.portfolio-cv)) { display: none !important; }
+        body:has(#publications.active) :has(.portfolio-cv) { display: block !important; height: auto !important; max-height: none !important; width: auto !important; max-width: none !important; overflow: visible !important; background: white !important; padding: 0 !important; margin: 0 !important; border: 0 !important; box-shadow: none !important; }
+        .portfolio-cv { padding: 0; font-size: 9pt; }
+      }
     </style>
   </head>
   <body>
@@ -975,66 +1002,56 @@
         </section>
 
         <section class="panel-section" id="publications" aria-labelledby="cv-title">
-          <div class="section-head">
-            <h2 id="cv-title">CV</h2>
-            <span></span>
-          </div>
-
-          <div class="project-list">
-            <article class="project-card cv-card">
+          <div class="section-head"><h2 id="cv-title">CV</h2><span></span></div>
+          <button class="cv-print" type="button" onclick="window.print()">Print / Save as PDF</button>
+          <article class="portfolio-cv" aria-label="CV of Md Mehedi Hassan">
+            <header class="cv-paper-header">
+              <img src="assets/profile.jpg?v=5" alt="Md Mehedi Hassan" width="240" height="300">
               <div>
-                <p class="project-type">Resume / Curriculum Vitae</p>
-                <h3>MD Mehedi Hassan - ATS Friendly CV</h3>
-                <p>
-                  Web Developer and Digital Marketer CV covering WordPress
-                  development, technical SEO, on-page/off-page SEO, WooCommerce,
-                  analytics and tracking, ORM, local SEO, and project
-                  experience across business, ecommerce, and service websites.
-                </p>
+                <h3>MD MEHEDI<br>HASSAN</h3>
+                <p class="cv-paper-role">Web Developer &amp; SEO Specialist</p>
+                <address><a href="mailto:mahadi10104@gmail.com">mahadi10104@gmail.com</a><a href="tel:+8801730665333">+880 1730665333</a><span>Dhaka, Bangladesh</span><a href="https://mhadihassan.github.io/mahadi-portfolio/">Portfolio</a></address>
               </div>
-              <div class="cv-actions">
-                <a href="assets/mahadi-hassan-cv.pdf" target="_blank" rel="noopener">
-                  <i data-lucide="eye"></i>
-                  View CV
-                </a>
-                <a href="assets/mahadi-hassan-cv.pdf" download>
-                  <i data-lucide="download"></i>
-                  Download
-                </a>
+            </header>
+            <div class="cv-paper-body">
+              <aside>
+                <h4>Education</h4>
+                <p><strong>BSc in Computer Science</strong><br>Zhejiang Gongshang University, China<br>2018–2022</p>
+                <h4>Training</h4>
+                <p><strong>WordPress Development</strong><br>Coders Foundation</p>
+                <p><strong>Digital Marketing Pro</strong><br>AMA &amp; Digital Marketing Institute</p>
+                <h4>Skills</h4>
+                <ul><li>WordPress, Headless WordPress, Elementor and WooCommerce</li><li>Custom websites and responsive UI</li><li>Technical, on-page and local SEO</li><li>cPanel and website maintenance</li><li>JavaScript, PHP, SQL and Python</li></ul>
+                <h4>Languages</h4>
+                <ul><li>Bangla — fluent</li><li>English — fluent</li><li>Chinese — intermediate</li></ul>
+              </aside>
+              <div>
+                <h4>About Me</h4>
+                <p>Computer science graduate and web developer with experience building and maintaining websites for international clients. I work across responsive frontend development, WordPress, technical SEO, and website performance.</p>
+                <h4>Professional Experience</h4>
+                <section class="cv-paper-job">
+                  <h5><a href="https://fujielevatorjapan.com/">Fuji Elevator Japan</a><span>2025 – Present</span></h5>
+                  <p><strong>Remote Web Developer</strong><br>Develop and maintain approximately 11 business websites across multiple markets. Build responsive interfaces, improve site architecture and search visibility, and handle performance optimization and troubleshooting.</p>
+                </section>
+                <section class="cv-paper-job">
+                  <h5><a href="https://stratateam.com.au/">Strata Team – Australia</a><span>2024 – 2025</span></h5>
+                  <p><strong>Web Developer</strong><br>Developed and maintained a strata management website, improving responsive layouts, usability, and performance.</p>
+                </section>
+                <section class="cv-paper-job">
+                  <h5><a href="https://trendyfur.com/">TrendyFur</a><span>2024</span></h5>
+                  <p><strong>Web Developer</strong><br>Contributed to frontend and backend development, responsive design, and website functionality.</p>
+                </section>
+                <section class="cv-paper-job">
+                  <h5><a href="https://tribuna.com/">Tribuna</a><span>2022</span></h5>
+                  <p><strong>Web Developer</strong><br>Developed online gaming functionality and resolved payment integration and processing issues.</p>
+                </section>
+                <section class="cv-paper-job">
+                  <h5><a href="https://musicpoint.com.bd/">Music Point</a><span>2021</span></h5>
+                  <p><strong>Web Developer &amp; Technical Solutions</strong><br>Built the website and contributed to product management architecture, troubleshooting, and ongoing optimization.</p>
+                </section>
               </div>
-            </article>
-
-            <article class="project-card cv-card cv-image-card">
-              <a
-                class="cv-preview-link"
-                href="assets/mahadi-modern-cv.jpg"
-                target="_blank"
-                rel="noopener"
-                aria-label="View modern CV image"
-              >
-                <img src="assets/mahadi-modern-cv.jpg?v=1" alt="MD Mehedi Hassan modern CV preview" />
-              </a>
-              <div class="cv-image-content">
-                <p class="project-type">Visual Resume</p>
-                <h3>Professional Modern CV Resume</h3>
-                <p>
-                  A modern single-page CV design with profile photo, education,
-                  skills, languages, about section, work experience, website
-                  building projects, and SEO experience.
-                </p>
-                <div class="cv-actions">
-                  <a href="assets/mahadi-modern-cv.jpg" target="_blank" rel="noopener">
-                    <i data-lucide="eye"></i>
-                    View Image
-                  </a>
-                  <a href="assets/mahadi-modern-cv.jpg" download>
-                    <i data-lucide="download"></i>
-                    Download
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
+            </div>
+          </article>
         </section>
       </main>
     </div>
